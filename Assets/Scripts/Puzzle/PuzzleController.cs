@@ -3,16 +3,24 @@ using UnityEngine;
 [RequireComponent(typeof(BoardView), typeof(BoardInput), typeof(LineView))]
 public class PuzzleController : MonoBehaviour
 {
+    [SerializeField] private int width = 8;
+    [SerializeField] private int height = 10;
+    [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
+
     private BoardView boardView;
     private BoardInput boardInput;
     private LineView lineView;
-    private Line line = new Line();
+    private PuzzleRound round;
 
     private void Awake()
     {
         boardView = GetComponent<BoardView>();
         boardInput = GetComponent<BoardInput>();
         lineView = GetComponent<LineView>();
+
+        round = new PuzzleRound(width, height);
+        round.StartRound(startFill);
+        boardView.Show(round.GetBoard());
     }
 
     private void OnEnable()
@@ -31,56 +39,24 @@ public class PuzzleController : MonoBehaviour
 
     private void OnPress(Vector2Int cell)
     {
-        if (boardView.GetItem(cell) == null)
-        {
-            return;
-        }
-
-        line.Start(cell);
-        lineView.Draw(line.GetCells());
+        round.OnPress(cell);
+        lineView.Draw(round.GetLine().GetCells());
     }
 
     private void OnDrag(Vector2Int cell)
     {
-        if (!line.IsActive())
-        {
-            return;
-        }
-
-        if (line.IsPreviousCell(cell))
-        {
-            line.TryExtend(cell);
-            lineView.Draw(line.GetCells());
-            return;
-        }
-
-        if (HasReachedItem())
-        {
-            return;
-        }
-
-        Item startItem = boardView.GetItem(line.GetStart());
-        Item item = boardView.GetItem(cell);
-
-        if (item != null && !item.IsSameType(startItem))
-        {
-            return;
-        }
-
-        if (line.TryExtend(cell))
-        {
-            lineView.Draw(line.GetCells());
-        }
+        round.OnDrag(cell);
+        lineView.Draw(round.GetLine().GetCells());
     }
 
     private void OnRelease(Vector2Int cell)
     {
-        line.Clear();
+        bool matched = round.OnRelease(cell);
         lineView.Clear();
-    }
 
-    private bool HasReachedItem()
-    {
-        return line.GetLength() > 1 && boardView.GetItem(line.GetEnd()) != null;
+        if (matched)
+        {
+            boardView.Refresh();
+        }
     }
 }

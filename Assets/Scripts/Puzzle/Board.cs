@@ -14,6 +14,16 @@ public class Board
         cells = new Item[width, height];
     }
 
+    public int GetWidth()
+    {
+        return width;
+    }
+
+    public int GetHeight()
+    {
+        return height;
+    }
+
     public bool IsInside(Vector2Int cell)
     {
         return cell.x >= 0 && cell.x < width

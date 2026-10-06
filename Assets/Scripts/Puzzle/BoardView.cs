@@ -2,25 +2,16 @@ using UnityEngine;
 
 public class BoardView : MonoBehaviour
 {
-    [Header("Board")]
-    [SerializeField] private int width = 8;
-    [SerializeField] private int height = 10;
-    [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
-
-    [Header("Look")]
     [SerializeField] private float cellSize = 2.5f;
     [SerializeField] private Color cellColor = new Color(0.22f, 0.24f, 0.33f);
 
     private Board board;
-    private Sprite squareSprite;
+    private Transform cellsRoot;
     private Transform itemsRoot;
 
-    private void Start()
+    public void Show(Board board)
     {
-        squareSprite = SquareSprite.Get();
-        board = new Board(width, height);
-
-        FillRandom();
+        this.board = board;
         DrawCells();
         Refresh();
     }
@@ -35,9 +26,9 @@ public class BoardView : MonoBehaviour
         itemsRoot = new GameObject("Items").transform;
         itemsRoot.SetParent(transform, false);
 
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < board.GetWidth(); x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < board.GetHeight(); y++)
             {
                 Vector2Int cell = new Vector2Int(x, y);
                 Item item = board.GetItem(cell);
@@ -53,56 +44,37 @@ public class BoardView : MonoBehaviour
 
     public Vector3 CellToWorld(Vector2Int cell)
     {
-        float offsetX = (cell.x - (width - 1) / 2f) * cellSize;
-        float offsetY = (cell.y - (height - 1) / 2f) * cellSize;
+        float offsetX = (cell.x - (board.GetWidth() - 1) / 2f) * cellSize;
+        float offsetY = (cell.y - (board.GetHeight() - 1) / 2f) * cellSize;
         return transform.position + new Vector3(offsetX, offsetY, 0f);
     }
 
     public Vector2Int WorldToCell(Vector3 worldPosition)
     {
         Vector3 local = worldPosition - transform.position;
-        int x = Mathf.RoundToInt(local.x / cellSize + (width - 1) / 2f);
-        int y = Mathf.RoundToInt(local.y / cellSize + (height - 1) / 2f);
+        int x = Mathf.RoundToInt(local.x / cellSize + (board.GetWidth() - 1) / 2f);
+        int y = Mathf.RoundToInt(local.y / cellSize + (board.GetHeight() - 1) / 2f);
         return new Vector2Int(x, y);
     }
 
     public bool IsInside(Vector2Int cell)
     {
-        return board.IsInside(cell);
-    }
-
-    public Item GetItem(Vector2Int cell)
-    {
-        return board.GetItem(cell);
-    }
-
-    private void FillRandom()
-    {
-        int itemCount = Mathf.RoundToInt(width * height * startFill);
-        int typeCount = System.Enum.GetValues(typeof(ItemType)).Length;
-
-        for (int i = 0; i < itemCount; i++)
-        {
-            var emptyCells = board.GetEmptyCells();
-            if (emptyCells.Count == 0)
-            {
-                return;
-            }
-
-            Vector2Int cell = emptyCells[Random.Range(0, emptyCells.Count)];
-            ItemType type = (ItemType)Random.Range(0, typeCount);
-            board.PlaceItem(new Item(type), cell);
-        }
+        return board != null && board.IsInside(cell);
     }
 
     private void DrawCells()
     {
-        Transform cellsRoot = new GameObject("Cells").transform;
+        if (cellsRoot != null)
+        {
+            Destroy(cellsRoot.gameObject);
+        }
+
+        cellsRoot = new GameObject("Cells").transform;
         cellsRoot.SetParent(transform, false);
 
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < board.GetWidth(); x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < board.GetHeight(); y++)
             {
                 Vector2Int cell = new Vector2Int(x, y);
                 CreateSquare("Cell " + x + "," + y, cellsRoot, CellToWorld(cell),
@@ -120,7 +92,7 @@ public class BoardView : MonoBehaviour
         square.transform.localScale = new Vector3(size, size, 1f);
 
         SpriteRenderer spriteRenderer = square.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = squareSprite;
+        spriteRenderer.sprite = SquareSprite.Get();
         spriteRenderer.color = color;
         spriteRenderer.sortingOrder = sortingOrder;
     }

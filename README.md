@@ -14,7 +14,7 @@ Full design: [Game Design Document](docs/GDD.md)
 
 ## Status
 
-Pre-production — design is done, development starts with v0.1.
+Puzzle prototype is playable. Next: v0.2 Puzzle Complete
 
 | Version | Goal | Status |
 |---|---|---|

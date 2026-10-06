@@ -58,6 +58,19 @@ public class BoardView : MonoBehaviour
         return transform.position + new Vector3(offsetX, offsetY, 0f);
     }
 
+    public Vector2Int WorldToCell(Vector3 worldPosition)
+    {
+        Vector3 local = worldPosition - transform.position;
+        int x = Mathf.RoundToInt(local.x / cellSize + (width - 1) / 2f);
+        int y = Mathf.RoundToInt(local.y / cellSize + (height - 1) / 2f);
+        return new Vector2Int(x, y);
+    }
+
+    public bool IsInside(Vector2Int cell)
+    {
+        return board.IsInside(cell);
+    }
+
     private void FillRandom()
     {
         int itemCount = Mathf.RoundToInt(width * height * startFill);
@@ -107,7 +120,6 @@ public class BoardView : MonoBehaviour
         spriteRenderer.sortingOrder = sortingOrder;
     }
 
-    // A 1x1 white square made in code, so no image file is needed yet.
     private static Sprite CreateSquareSprite()
     {
         Texture2D texture = new Texture2D(1, 1);

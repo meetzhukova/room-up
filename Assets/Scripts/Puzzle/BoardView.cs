@@ -17,7 +17,7 @@ public class BoardView : MonoBehaviour
 
     private void Start()
     {
-        squareSprite = CreateSquareSprite();
+        squareSprite = SquareSprite.Get();
         board = new Board(width, height);
 
         FillRandom();
@@ -71,6 +71,11 @@ public class BoardView : MonoBehaviour
         return board.IsInside(cell);
     }
 
+    public Item GetItem(Vector2Int cell)
+    {
+        return board.GetItem(cell);
+    }
+
     private void FillRandom()
     {
         int itemCount = Mathf.RoundToInt(width * height * startFill);
@@ -118,16 +123,6 @@ public class BoardView : MonoBehaviour
         spriteRenderer.sprite = squareSprite;
         spriteRenderer.color = color;
         spriteRenderer.sortingOrder = sortingOrder;
-    }
-
-    private static Sprite CreateSquareSprite()
-    {
-        Texture2D texture = new Texture2D(1, 1);
-        texture.SetPixel(0, 0, Color.white);
-        texture.filterMode = FilterMode.Point;
-        texture.Apply();
-
-        return Sprite.Create(texture, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
     }
 
     private static Color GetColor(ItemType type)

@@ -46,7 +46,7 @@ Open the folder in Unity Hub (**Add → Add project from disk**). The Unity proj
 
 ## Workflow
 
-Work happens in branches named after the milestone (`v0.1/board-grid`) and is merged into `main` through pull requests. Commits follow [Conventional Commits](https://www.conventionalcommits.org/). Details in [CONTRIBUTING.md](CONTRIBUTING.md), history in [CHANGELOG.md](CHANGELOG.md).
+Work happens in branches named after the milestone (`v0.1/board-grid`) and is merged into `main` through pull requests. Commits follow [Conventional Commits](https://www.conventionalcommits.org/).
 
 ## License
 

@@ -1,0 +1,23 @@
+name: Task
+description: Setup, documentation, art or other work that is not a gameplay feature
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      placeholder: |
+        - [ ] ...
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+    validations:
+      required: true

@@ -18,9 +18,9 @@ Pre-production — design is done, development starts with v0.1.
 
 | Version | Goal | Status |
 |---|---|---|
-| v0.0 Pre-production | Design documents, repository setup | In progress |
-| v0.1 Puzzle Prototype | Board, items, line, matching | Planned |
-| v0.2 Puzzle Complete | Capture, coins, spawning, results | Planned |
+| v0.0 Pre-production | Design documents, repository setup | Done |
+| v0.1 Puzzle Prototype | Board, items, line, matching | Done |
+| v0.2 Puzzle Complete | Capture, coins, spawning, results | In Progress |
 | v0.3 Room Prototype | Room grid, place and rotate furniture | Planned |
 | v0.4 Shop & Save | Shop, inventory, saving | Planned |
 | v0.5 Art & UI | Pixel art, menus | Planned |

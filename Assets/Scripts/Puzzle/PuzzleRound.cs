@@ -94,6 +94,8 @@ public class PuzzleRound
             board.RemoveItem(matchedCell);
         }
 
+        spawner.BlockCells(matched);
+
         int reward = CalculateReward(matched.Count);
         roundCoins += reward;
         wallet.AddCoins(reward);

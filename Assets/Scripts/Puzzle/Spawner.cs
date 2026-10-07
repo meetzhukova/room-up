@@ -14,6 +14,7 @@ public class Spawner
     private SpawnSettings settings;
     private float interval;
     private float timer;
+    private Dictionary<Vector2Int, float> blockedCells = new Dictionary<Vector2Int, float>();
 
     public Spawner(SpawnSettings settings)
     {
@@ -21,8 +22,22 @@ public class Spawner
         interval = settings.startInterval;
     }
 
+    public void BlockCells(IEnumerable<Vector2Int> cells)
+    {
+        foreach (Vector2Int cell in cells)
+        {
+            blockedCells[cell] = settings.clearedCellCooldown;
+        }
+    }
+
+    public bool IsBlocked(Vector2Int cell)
+    {
+        return blockedCells.ContainsKey(cell);
+    }
+
     public bool Tick(float deltaTime, float fillRatio)
     {
+        UpdateBlockedCells(deltaTime);
         timer += deltaTime;
 
         if (timer < GetCurrentInterval(fillRatio))
@@ -89,8 +104,36 @@ public class Spawner
     private void SpawnRandom(Board board)
     {
         List<Vector2Int> emptyCells = board.GetEmptyCells();
-        Vector2Int cell = emptyCells[Random.Range(0, emptyCells.Count)];
-        board.PlaceItem(new Item(RandomType()), cell);
+        List<Vector2Int> freeCells = emptyCells.FindAll(cell => !IsBlocked(cell));
+
+        if (freeCells.Count > 0)
+        {
+            emptyCells = freeCells;
+        }
+
+        Vector2Int target = emptyCells[Random.Range(0, emptyCells.Count)];
+        board.PlaceItem(new Item(RandomType()), target);
+    }
+
+    private void UpdateBlockedCells(float deltaTime)
+    {
+        List<Vector2Int> expired = new List<Vector2Int>();
+        List<Vector2Int> cells = new List<Vector2Int>(blockedCells.Keys);
+
+        foreach (Vector2Int cell in cells)
+        {
+            blockedCells[cell] -= deltaTime;
+
+            if (blockedCells[cell] <= 0f)
+            {
+                expired.Add(cell);
+            }
+        }
+
+        foreach (Vector2Int cell in expired)
+        {
+            blockedCells.Remove(cell);
+        }
     }
 
     private bool TrySpawnHelper(Board board)
@@ -119,7 +162,7 @@ public class Spawner
 
                 Vector2Int helperCell = tapCell + direction;
 
-                if (board.IsEmpty(helperCell))
+                if (board.IsEmpty(helperCell) && !IsBlocked(helperCell))
                 {
                     ItemType type = board.GetItem(target).GetItemType();
                     board.PlaceItem(new Item(type), helperCell);

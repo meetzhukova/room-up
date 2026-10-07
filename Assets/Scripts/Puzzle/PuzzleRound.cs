@@ -32,7 +32,7 @@ public class PuzzleRound
             return false;
         }
 
-        if (!spawner.SpawnItem(board))
+        if (spawner.SpawnBatch(board) == 0)
         {
             isOver = true;
             return false;

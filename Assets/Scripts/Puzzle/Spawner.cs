@@ -1,22 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner
 {
+    private SpawnSettings settings;
     private float interval;
-    private float minInterval;
-    private float speedUp;
-    private float lowFillThreshold;
-    private float lowFillMultiplier;
     private float timer;
 
-    public Spawner(float startInterval, float minInterval, float speedUp,
-        float lowFillThreshold, float lowFillMultiplier)
+    public Spawner(SpawnSettings settings)
     {
-        interval = startInterval;
-        this.minInterval = minInterval;
-        this.speedUp = speedUp;
-        this.lowFillThreshold = lowFillThreshold;
-        this.lowFillMultiplier = lowFillMultiplier;
+        this.settings = settings;
+        interval = settings.startInterval;
     }
 
     public bool Tick(float deltaTime, float fillRatio)
@@ -29,35 +23,66 @@ public class Spawner
         }
 
         timer = 0f;
-        interval = Mathf.Max(minInterval, interval * speedUp);
+        interval = Mathf.Max(settings.minInterval, interval * settings.speedUp);
         return true;
     }
 
     public float GetCurrentInterval(float fillRatio)
     {
-        if (fillRatio >= lowFillThreshold)
+        if (fillRatio >= settings.lowFillThreshold)
         {
             return interval;
         }
 
-        float t = fillRatio / lowFillThreshold;
-        return interval * Mathf.Lerp(lowFillMultiplier, 1f, t);
+        float t = fillRatio / settings.lowFillThreshold;
+        return interval * Mathf.Lerp(settings.lowFillMultiplier, 1f, t);
+    }
+
+    public int SpawnBatch(Board board)
+    {
+        int count = 1;
+
+        while (count < settings.maxItemsPerSpawn && Random.value < settings.extraItemChance)
+        {
+            count++;
+        }
+
+        int spawned = 0;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (!SpawnItem(board))
+            {
+                break;
+            }
+
+            spawned++;
+        }
+
+        return spawned;
     }
 
     public bool SpawnItem(Board board)
     {
-        var emptyCells = board.GetEmptyCells();
-
-        if (emptyCells.Count == 0)
+        if (!board.HasEmptyCell())
         {
             return false;
         }
 
-        int typeCount = System.Enum.GetValues(typeof(ItemType)).Length;
-        Vector2Int cell = emptyCells[Random.Range(0, emptyCells.Count)];
-        ItemType type = (ItemType)Random.Range(0, typeCount);
-
-        board.PlaceItem(new Item(type), cell);
+        SpawnRandom(board);
         return true;
+    }
+
+    private void SpawnRandom(Board board)
+    {
+        List<Vector2Int> emptyCells = board.GetEmptyCells();
+        Vector2Int cell = emptyCells[Random.Range(0, emptyCells.Count)];
+        board.PlaceItem(new Item(RandomType()), cell);
+    }
+
+    private static ItemType RandomType()
+    {
+        int typeCount = System.Enum.GetValues(typeof(ItemType)).Length;
+        return (ItemType)Random.Range(0, typeCount);
     }
 }

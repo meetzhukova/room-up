@@ -11,12 +11,7 @@ public class PuzzleController : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
     [SerializeField] private float linkShowTime = 0.15f;
 
-    [Header("Spawning")]
-    [SerializeField] private float spawnInterval = 3f;
-    [SerializeField] private float minSpawnInterval = 1f;
-    [SerializeField, Range(0.5f, 1f)] private float spawnSpeedUp = 0.97f;
-    [SerializeField, Range(0f, 1f)] private float lowFillThreshold = 0.3f;
-    [SerializeField, Range(0.1f, 1f)] private float lowFillMultiplier = 0.25f;
+    [SerializeField] private SpawnSettings spawnSettings = new SpawnSettings();
 
     private BoardView boardView;
     private BoardInput boardInput;
@@ -34,8 +29,7 @@ public class PuzzleController : MonoBehaviour
         hudView = GetComponent<HudView>();
 
         wallet = new Wallet();
-        Spawner spawner = new Spawner(spawnInterval, minSpawnInterval, spawnSpeedUp,
-            lowFillThreshold, lowFillMultiplier);
+        Spawner spawner = new Spawner(spawnSettings);
         round = new PuzzleRound(width, height, wallet, spawner);
         round.StartRound(startFill);
         boardView.Show(round.GetBoard());

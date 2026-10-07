@@ -24,6 +24,13 @@ public class Board
         return height;
     }
 
+    public float GetFillRatio()
+    {
+        int total = width * height;
+        int empty = GetEmptyCells().Count;
+        return (float)(total - empty) / total;
+    }
+
     public bool IsInside(Vector2Int cell)
     {
         return cell.x >= 0 && cell.x < width

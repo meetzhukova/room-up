@@ -15,6 +15,12 @@ public class PlacedFurniture
         this.origin = origin;
     }
 
+    public PlacedFurniture(FurnitureData data, RoomSurface surface, Vector2Int origin, int rotation)
+        : this(data, surface, origin)
+    {
+        this.rotation = data.isWallItem ? 0 : ((rotation % 4) + 4) % 4;
+    }
+
     public FurnitureData GetData()
     {
         return data;

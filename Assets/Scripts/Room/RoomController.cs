@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RoomView), typeof(FurnitureView), typeof(RoomInput))]
@@ -9,17 +8,6 @@ public class RoomController : MonoBehaviour
     [SerializeField] private int size = 5;
     [SerializeField] private int wallHeight = 5;
     [SerializeField] private int startCoins = 0;
-    [SerializeField] private List<FurnitureData> catalog = new List<FurnitureData>
-    {
-        new FurnitureData("Chair", new Vector2Int(1, 1), false, 1f, 20, new Color(0.9f, 0.45f, 0.4f)),
-        new FurnitureData("Plant", new Vector2Int(1, 1), false, 1.4f, 25, new Color(0.4f, 0.75f, 0.45f)),
-        new FurnitureData("Lamp", new Vector2Int(1, 1), false, 1.8f, 30, new Color(0.98f, 0.84f, 0.3f)),
-        new FurnitureData("Picture", new Vector2Int(1, 1), true, 0f, 35, new Color(0.55f, 0.8f, 0.9f)),
-        new FurnitureData("Shelf", new Vector2Int(2, 1), true, 0f, 50, new Color(0.75f, 0.55f, 0.85f)),
-        new FurnitureData("Table", new Vector2Int(2, 2), false, 0.8f, 80, new Color(0.6f, 0.45f, 0.3f)),
-        new FurnitureData("Bed", new Vector2Int(1, 2), false, 0.6f, 120, new Color(0.45f, 0.6f, 0.9f)),
-        new FurnitureData("Sofa", new Vector2Int(1, 2), false, 0.9f, 150, new Color(0.9f, 0.55f, 0.7f))
-    };
 
     private RoomView roomView;
     private FurnitureView furnitureView;
@@ -74,7 +62,7 @@ public class RoomController : MonoBehaviour
         PlayerProgress progress = Game.Progress;
         inventory = progress.GetInventory();
         wallet = progress.GetWallet();
-        shop = new Shop(catalog);
+        shop = new Shop(Game.Catalog.GetItems());
 
         if (progress.IsNew())
         {
@@ -85,13 +73,43 @@ public class RoomController : MonoBehaviour
         grid = new RoomGrid(size, wallHeight);
         foreach (PlacedFurniture furniture in progress.GetPlaced())
         {
-            grid.Place(furniture);
+            if (!grid.Place(furniture))
+            {
+                inventory.Add(furniture.GetData());
+            }
         }
+        progress.SetPlaced(grid.GetPlaced());
 
         roomView.Show(grid);
         roomHud.SetCoins(wallet.GetCoins());
         furnitureView.Refresh(grid.GetPlaced());
         roomHud.ShowInventory(inventory.GetItems());
+    }
+
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            SaveWithMovingItem();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveWithMovingItem();
+    }
+
+    private void SaveWithMovingItem()
+    {
+        if (moving != null)
+        {
+            inventory.Add(moving.GetData());
+            Game.Save();
+            inventory.Remove(moving.GetData());
+            return;
+        }
+
+        Game.Save();
     }
 
     private void OnPlayClicked()
@@ -126,6 +144,7 @@ public class RoomController : MonoBehaviour
         roomHud.SetCoins(wallet.GetCoins());
         roomHud.ShowInventory(inventory.GetItems());
         shopView.Show(shop.GetItems(), wallet.GetCoins());
+        Game.Save();
     }
 
     private void OnCloseShopClicked()
@@ -250,6 +269,7 @@ public class RoomController : MonoBehaviour
     {
         moving = null;
         Game.Progress.SetPlaced(grid.GetPlaced());
+        Game.Save();
         furnitureView.HideGhost();
         roomView.SetGridVisible(false);
         furnitureView.Refresh(grid.GetPlaced());

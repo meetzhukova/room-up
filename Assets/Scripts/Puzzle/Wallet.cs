@@ -2,6 +2,15 @@ public class Wallet
 {
     private int coins;
 
+    public Wallet()
+    {
+    }
+
+    public Wallet(int startCoins)
+    {
+        coins = startCoins > 0 ? startCoins : 0;
+    }
+
     public int GetCoins()
     {
         return coins;

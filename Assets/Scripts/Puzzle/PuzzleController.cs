@@ -6,8 +6,6 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PuzzleController : MonoBehaviour
 {
-    private const string BestScoreKey = "BestRoundCoins";
-
     [SerializeField] private int width = 8;
     [SerializeField] private int height = 10;
     [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
@@ -87,6 +85,19 @@ public class PuzzleController : MonoBehaviour
         resultsView.Hide();
     }
 
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            Game.Save();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Game.Save();
+    }
+
     private void GoHome()
     {
         Game.OpenRoom();
@@ -94,18 +105,12 @@ public class PuzzleController : MonoBehaviour
 
     private void EndRound()
     {
+        PlayerProgress progress = Game.Progress;
         int roundCoins = round.GetRoundCoins();
-        int bestCoins = PlayerPrefs.GetInt(BestScoreKey, 0);
-        bool isNewBest = roundCoins > bestCoins;
+        bool isNewBest = progress.TrySetBestRoundCoins(roundCoins);
+        Game.Save();
 
-        if (isNewBest)
-        {
-            bestCoins = roundCoins;
-            PlayerPrefs.SetInt(BestScoreKey, bestCoins);
-            PlayerPrefs.Save();
-        }
-
-        resultsView.Show(roundCoins, bestCoins, isNewBest);
+        resultsView.Show(roundCoins, progress.GetBestRoundCoins(), isNewBest);
     }
 
     private void OnPress(Vector2Int cell)

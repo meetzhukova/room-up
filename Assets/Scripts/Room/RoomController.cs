@@ -2,26 +2,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RoomView), typeof(FurnitureView), typeof(RoomInput))]
-[RequireComponent(typeof(RoomHud))]
+[RequireComponent(typeof(RoomHud), typeof(ShopView))]
 [DisallowMultipleComponent]
 public class RoomController : MonoBehaviour
 {
     [SerializeField] private int size = 5;
     [SerializeField] private int wallHeight = 5;
-    [SerializeField] private List<FurnitureData> startItems = new List<FurnitureData>
+    [SerializeField] private int startCoins = 0;
+    [SerializeField] private List<FurnitureData> catalog = new List<FurnitureData>
     {
-        new FurnitureData("Chair", new Vector2Int(1, 1), false, 1f, new Color(0.9f, 0.45f, 0.4f)),
-        new FurnitureData("Bed", new Vector2Int(1, 2), false, 0.6f, new Color(0.45f, 0.6f, 0.9f)),
-        new FurnitureData("Table", new Vector2Int(2, 2), false, 0.8f, new Color(0.6f, 0.45f, 0.3f)),
-        new FurnitureData("Lamp", new Vector2Int(1, 1), false, 1.8f, new Color(0.98f, 0.84f, 0.3f)),
-        new FurnitureData("Picture", new Vector2Int(1, 1), true, 0f, new Color(0.55f, 0.8f, 0.5f)),
-        new FurnitureData("Shelf", new Vector2Int(2, 1), true, 0f, new Color(0.75f, 0.55f, 0.85f))
+        new FurnitureData("Chair", new Vector2Int(1, 1), false, 1f, 20, new Color(0.9f, 0.45f, 0.4f)),
+        new FurnitureData("Plant", new Vector2Int(1, 1), false, 1.4f, 25, new Color(0.4f, 0.75f, 0.45f)),
+        new FurnitureData("Lamp", new Vector2Int(1, 1), false, 1.8f, 30, new Color(0.98f, 0.84f, 0.3f)),
+        new FurnitureData("Picture", new Vector2Int(1, 1), true, 0f, 35, new Color(0.55f, 0.8f, 0.9f)),
+        new FurnitureData("Shelf", new Vector2Int(2, 1), true, 0f, 50, new Color(0.75f, 0.55f, 0.85f)),
+        new FurnitureData("Table", new Vector2Int(2, 2), false, 0.8f, 80, new Color(0.6f, 0.45f, 0.3f)),
+        new FurnitureData("Bed", new Vector2Int(1, 2), false, 0.6f, 120, new Color(0.45f, 0.6f, 0.9f)),
+        new FurnitureData("Sofa", new Vector2Int(1, 2), false, 0.9f, 150, new Color(0.9f, 0.55f, 0.7f))
     };
 
     private RoomView roomView;
     private FurnitureView furnitureView;
     private RoomInput roomInput;
     private RoomHud roomHud;
+    private ShopView shopView;
+    private Shop shop;
+    private Wallet wallet;
     private RoomGrid grid;
     private Inventory inventory;
     private PlacedFurniture moving;
@@ -32,6 +38,7 @@ public class RoomController : MonoBehaviour
         furnitureView = GetComponent<FurnitureView>();
         roomInput = GetComponent<RoomInput>();
         roomHud = GetComponent<RoomHud>();
+        shopView = GetComponent<ShopView>();
     }
 
     private void OnEnable()
@@ -43,6 +50,9 @@ public class RoomController : MonoBehaviour
         roomHud.PlaceClicked += OnPlaceClicked;
         roomHud.StoreClicked += OnStoreClicked;
         roomHud.PlayClicked += OnPlayClicked;
+        roomHud.ShopClicked += OnShopClicked;
+        shopView.BuyClicked += OnBuyClicked;
+        shopView.CloseClicked += OnCloseShopClicked;
     }
 
     private void OnDisable()
@@ -54,19 +64,21 @@ public class RoomController : MonoBehaviour
         roomHud.PlaceClicked -= OnPlaceClicked;
         roomHud.StoreClicked -= OnStoreClicked;
         roomHud.PlayClicked -= OnPlayClicked;
+        roomHud.ShopClicked -= OnShopClicked;
+        shopView.BuyClicked -= OnBuyClicked;
+        shopView.CloseClicked -= OnCloseShopClicked;
     }
 
     private void Start()
     {
         PlayerProgress progress = Game.Progress;
         inventory = progress.GetInventory();
+        wallet = progress.GetWallet();
+        shop = new Shop(catalog);
 
         if (progress.IsNew())
         {
-            foreach (FurnitureData item in startItems)
-            {
-                inventory.Add(item);
-            }
+            wallet.AddCoins(startCoins);
             progress.MarkStarted();
         }
 
@@ -77,7 +89,7 @@ public class RoomController : MonoBehaviour
         }
 
         roomView.Show(grid);
-        roomHud.SetCoins(progress.GetWallet().GetCoins());
+        roomHud.SetCoins(wallet.GetCoins());
         furnitureView.Refresh(grid.GetPlaced());
         roomHud.ShowInventory(inventory.GetItems());
     }
@@ -91,6 +103,34 @@ public class RoomController : MonoBehaviour
         }
 
         Game.OpenPuzzle();
+    }
+
+    private void OnShopClicked()
+    {
+        if (moving != null)
+        {
+            return;
+        }
+
+        shopView.Show(shop.GetItems(), wallet.GetCoins());
+    }
+
+    private void OnBuyClicked(int index)
+    {
+        FurnitureData item = shop.GetItems()[index];
+        if (!shop.TryBuy(item, wallet, inventory))
+        {
+            return;
+        }
+
+        roomHud.SetCoins(wallet.GetCoins());
+        roomHud.ShowInventory(inventory.GetItems());
+        shopView.Show(shop.GetItems(), wallet.GetCoins());
+    }
+
+    private void OnCloseShopClicked()
+    {
+        shopView.Hide();
     }
 
     private void OnItemClicked(int index)

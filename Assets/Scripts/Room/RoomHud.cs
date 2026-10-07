@@ -13,6 +13,7 @@ public class RoomHud : MonoBehaviour
     public event Action PlaceClicked;
     public event Action StoreClicked;
     public event Action PlayClicked;
+    public event Action ShopClicked;
 
     [SerializeField] private Color panelColor = new Color(0.16f, 0.17f, 0.24f, 0.9f);
     [SerializeField] private Color buttonColor = new Color(0.29f, 0.53f, 0.96f);
@@ -24,6 +25,7 @@ public class RoomHud : MonoBehaviour
     private Button rotateButton;
     private Button placeButton;
     private Text coinsText;
+    private Button shopButton;
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class RoomHud : MonoBehaviour
             CreateButton(items[i].name, itemsGrid, buttonColor, () => ItemClicked?.Invoke(index));
         }
 
+        shopButton.interactable = true;
         inventoryPanel.gameObject.SetActive(true);
         placingPanel.gameObject.SetActive(false);
     }
@@ -51,6 +54,7 @@ public class RoomHud : MonoBehaviour
     public void ShowPlacing(bool canRotate)
     {
         rotateButton.interactable = canRotate;
+        shopButton.interactable = false;
         inventoryPanel.gameObject.SetActive(false);
         placingPanel.gameObject.SetActive(true);
     }
@@ -96,6 +100,14 @@ public class RoomHud : MonoBehaviour
         playRect.anchorMax = new Vector2(1f, 0.5f);
         playRect.pivot = new Vector2(1f, 0.5f);
         playRect.sizeDelta = new Vector2(300f, 130f);
+
+        shopButton = CreateButton("Shop", topBar, buttonColor, () => ShopClicked?.Invoke());
+        RectTransform shopRect = (RectTransform)shopButton.transform;
+        shopRect.anchorMin = new Vector2(1f, 0.5f);
+        shopRect.anchorMax = new Vector2(1f, 0.5f);
+        shopRect.pivot = new Vector2(1f, 0.5f);
+        shopRect.anchoredPosition = new Vector2(-320f, 0f);
+        shopRect.sizeDelta = new Vector2(300f, 130f);
 
         inventoryPanel = CreateBottomPanel("Inventory", root.transform, 440f);
         itemsGrid = CreateRect("Items", inventoryPanel);

@@ -14,14 +14,14 @@ Full design: [Game Design Document](docs/GDD.md)
 
 ## Status
 
-Puzzle prototype is playable. Next: v0.2 Puzzle Complete
+Puzzle is a complete round: tap to match, coins, spawning and results. Next: v0.3 Room Prototype.
 
 | Version | Goal | Status |
 |---|---|---|
 | v0.0 Pre-production | Design documents, repository setup | Done |
 | v0.1 Puzzle Prototype | Board, items, line, matching | Done |
-| v0.2 Puzzle Complete | Capture, coins, spawning, results | In Progress |
-| v0.3 Room Prototype | Room grid, place and rotate furniture | Planned |
+| v0.2 Puzzle Complete | Capture, coins, spawning, results | Done |
+| v0.3 Room Prototype | Room grid, place and rotate furniture | In Progress |
 | v0.4 Shop & Save | Shop, inventory, saving | Planned |
 | v0.5 Art & UI | Pixel art, menus | Planned |
 | v1.0 Release | Balance, bug fixes, Android build | Planned |

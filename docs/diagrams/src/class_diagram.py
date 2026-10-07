@@ -98,7 +98,7 @@ def legend(y):
     items = [
         ("composition", "owns (created and destroyed together)"),
         ("aggregation", "uses, but lives longer"),
-        ("dependency", "uses as a method parameter"),
+        ("dependency", "depends on (parameter or return value)"),
     ]
     for kind, label in items:
         if kind == "composition":
@@ -139,39 +139,48 @@ def markers():
 
 
 def main():
-    width = 1420
+    width = 1560
 
-    # ---------- PuzzleRound (center top) ----------
-    pr_x, pr_y, pr_w = 520, 130, 400
+    # ---------- row 1: TapResult · PuzzleRound · Wallet ----------
+    row1 = 130
+
+    tr_x, tr_w = 40, 380
+    tr_h = uml_class(
+        tr_x, row1, tr_w, "TapResult",
+        [
+            "+ MatchedCells: List<Vector2Int>",
+            "+ Reward: int",
+            "+ IsCombo: bool",
+        ],
+        ["+ TapResult(cells, reward, isCombo)"],
+    )
+
+    pr_x, pr_w = 540, 470
     pr_h = uml_class(
-        pr_x, pr_y, pr_w, "PuzzleRound",
+        pr_x, row1, pr_w, "PuzzleRound",
         [
             "- board: Board",
-            "- line: Line",
-            "- spawner: Spawner",
             "- wallet: Wallet",
+            "- spawner: Spawner",
             "- roundCoins: int",
             "- isOver: bool",
         ],
         [
-            "+ PuzzleRound(wallet: Wallet)",
-            "+ StartRound(): void",
-            "+ Update(deltaTime: float): void",
-            "+ OnPress(cell: Vector2Int): void",
-            "+ OnDrag(cell: Vector2Int): void",
-            "+ OnRelease(cell: Vector2Int): void",
+            "+ PuzzleRound(w, h: int, wallet, spawner)",
+            "+ StartRound(startFill: float): void",
+            "+ Update(deltaTime: float): bool",
+            "+ Tap(cell: Vector2Int): TapResult",
             "+ GetRoundCoins(): int",
+            "+ GetBoard(): Board",
             "+ IsOver(): bool",
-            "- TryMatch(a, b: Vector2Int): bool",
             "- CalculateReward(count: int): int",
-            "- EndRound(): void",
+            "- CountSameType(cells, item): int",
         ],
     )
 
-    # ---------- Wallet (right of PuzzleRound) ----------
-    wa_x, wa_y, wa_w = 1060, 130, 320
+    wa_x, wa_w = 1170, 350
     uml_class(
-        wa_x, wa_y, wa_w, "Wallet",
+        wa_x, row1, wa_w, "Wallet",
         ["- coins: int"],
         [
             "+ GetCoins(): int",
@@ -180,17 +189,21 @@ def main():
         ],
     )
 
-    # ---------- second row ----------
-    row_y = pr_y + pr_h + 90
-    bo_x, bo_w = 40, 420
+    # ---------- row 2: Board · Spawner · SpawnSettings ----------
+    row2 = row1 + pr_h + 100
+
+    bo_x, bo_w = 40, 500
     bo_h = uml_class(
-        bo_x, row_y, bo_w, "Board",
+        bo_x, row2, bo_w, "Board",
         [
             "- width: int",
             "- height: int",
             "- cells: Item[,]",
         ],
         [
+            "+ GetWidth(): int",
+            "+ GetHeight(): int",
+            "+ GetFillRatio(): float",
             "+ IsInside(cell: Vector2Int): bool",
             "+ IsEmpty(cell: Vector2Int): bool",
             "+ GetItem(cell: Vector2Int): Item",
@@ -198,87 +211,100 @@ def main():
             "+ RemoveItem(cell: Vector2Int): void",
             "+ HasEmptyCell(): bool",
             "+ GetEmptyCells(): List<Vector2Int>",
-            "+ FindGroup(start: Vector2Int): List<Vector2Int>",
+            "+ GetItemCells(): List<Vector2Int>",
+            "+ FindNearestInCross(origin): List<Vector2Int>",
         ],
     )
 
-    li_x, li_w = 510, 340
-    li_h = uml_class(
-        li_x, row_y, li_w, "Line",
-        ["- cells: List<Vector2Int>"],
-        [
-            "+ Start(cell: Vector2Int): void",
-            "+ TryExtend(cell: Vector2Int): bool",
-            "+ GetStart(): Vector2Int",
-            "+ GetEnd(): Vector2Int",
-            "+ IsActive(): bool",
-            "+ Clear(): void",
-        ],
-    )
-
-    sp_x, sp_w = 900, 380
+    sp_x, sp_w = 600, 480
     sp_h = uml_class(
-        sp_x, row_y, sp_w, "Spawner",
+        sp_x, row2, sp_w, "Spawner",
         [
+            "- settings: SpawnSettings",
             "- interval: float",
-            "- minInterval: float",
             "- timer: float",
-            "- helperChance: float",
+            "- blockedCells: Dictionary<Vector2Int, float>",
         ],
         [
-            "+ Tick(deltaTime: float): bool",
+            "+ Spawner(settings: SpawnSettings)",
+            "+ Tick(deltaTime, fillRatio: float): bool",
+            "+ GetCurrentInterval(fillRatio: float): float",
+            "+ SpawnBatch(board: Board): int",
             "+ SpawnItem(board: Board): bool",
+            "+ BlockCells(cells): void",
+            "+ IsBlocked(cell: Vector2Int): bool",
+            "- TrySpawnHelper(board: Board): bool",
+            "- SpawnRandom(board: Board): void",
         ],
     )
 
-    # ---------- third row ----------
-    it_y = row_y + bo_h + 80
+    ss_x, ss_w = 1170, 350
+    uml_class(
+        ss_x, row2, ss_w, "SpawnSettings",
+        [
+            "+ startInterval: float",
+            "+ minInterval: float",
+            "+ speedUp: float",
+            "+ lowFillThreshold: float",
+            "+ lowFillMultiplier: float",
+            "+ extraItemChance: float",
+            "+ maxItemsPerSpawn: int",
+            "+ clearedCellCooldown: float",
+            "+ helperChance: float",
+        ],
+        [],
+        stereotype="serializable",
+    )
+
+    # ---------- row 3: Item · ItemType ----------
+    row3 = row2 + max(bo_h, sp_h) + 100
+
     it_x, it_w = 40, 340
     it_h = uml_class(
-        it_x, it_y, it_w, "Item",
+        it_x, row3, it_w, "Item",
         ["- type: ItemType"],
         [
             "+ Item(type: ItemType)",
-            "+ GetType(): ItemType",
+            "+ GetItemType(): ItemType",
             "+ IsSameType(other: Item): bool",
         ],
     )
     en_x, en_w = 470, 200
     en_h = uml_class(
-        en_x, it_y, en_w, "ItemType",
+        en_x, row3, en_w, "ItemType",
         ["Red", "Blue", "Green", "Yellow", "Purple", "Orange"],
         [],
         stereotype="enumeration",
     )
 
-    pr_bottom = pr_y + pr_h
+    pr_bottom = row1 + pr_h
+    mid1 = pr_bottom + 50
 
-    # ---------- connectors ----------
     # PuzzleRound ◆— Board
-    connector([(560, pr_bottom), (560, pr_bottom + 40), (250, pr_bottom + 40), (250, row_y)],
-              start="diamond-filled", label="1", label_at=(260, row_y - 14))
-    # PuzzleRound ◆— Line
-    connector([(680, pr_bottom), (680, row_y)],
-              start="diamond-filled", label="1", label_at=(690, row_y - 14))
-    # PuzzleRound ◆— Spawner
-    connector([(880, pr_bottom), (880, pr_bottom + 40), (1090, pr_bottom + 40), (1090, row_y)],
-              start="diamond-filled", label="1", label_at=(1100, row_y - 14))
+    connector([(600, pr_bottom), (600, mid1), (290, mid1), (290, row2)],
+              start="diamond-filled", label="1", label_at=(300, row2 - 14))
+    # PuzzleRound ◇— Spawner
+    connector([(840, pr_bottom), (840, row2)],
+              start="diamond-hollow", label="1", label_at=(850, row2 - 14))
     # PuzzleRound ◇— Wallet
-    connector([(pr_x + pr_w, 200), (wa_x, 200)],
-              start="diamond-hollow", label="1", label_at=(wa_x - 16, 186))
-
-    # Board ◆— Item  (0..80 items: 8 x 10 cells)
-    connector([(250, row_y + bo_h), (250, it_y)],
-              start="diamond-filled", label="0..80", label_at=(262, it_y - 14))
+    connector([(pr_x + pr_w, row1 + 70), (wa_x, row1 + 70)],
+              start="diamond-hollow", label="1", label_at=(wa_x - 16, row1 + 56))
+    # PuzzleRound ..> TapResult (creates and returns)
+    connector([(pr_x, row1 + 70), (tr_x + tr_w, row1 + 70)],
+              end="arrow-open", dashed=True, label="creates", label_at=(pr_x - 50, row1 + 56))
+    # Spawner ◇— SpawnSettings
+    connector([(sp_x + sp_w, row2 + 70), (ss_x, row2 + 70)],
+              start="diamond-hollow", label="1", label_at=(ss_x - 16, row2 + 56))
+    # Spawner ..> Board (uses as a parameter)
+    connector([(sp_x, row2 + 200), (bo_x + bo_w, row2 + 200)],
+              end="arrow-open", dashed=True, label="uses", label_at=(sp_x - 30, row2 + 186))
+    # Board ◆— Item
+    connector([(210, row2 + bo_h), (210, row3)],
+              start="diamond-filled", label="0..80", label_at=(222, row3 - 14))
     # Item —> ItemType
-    connector([(it_x + it_w, it_y + 70), (en_x, it_y + 70)], end="arrow-open")
-    # Spawner ..> Board (SpawnItem takes a Board)
-    sp_bottom = row_y + sp_h
-    dep_y = row_y + max(li_h, sp_h) + 40
-    connector([(1090, sp_bottom), (1090, dep_y), (bo_x + bo_w, dep_y)],
-              end="arrow-open", dashed=True, label="uses", label_at=(1100, dep_y - 16))
+    connector([(it_x + it_w, row3 + 70), (en_x, row3 + 70)], end="arrow-open")
 
-    height = it_y + max(it_h, en_h) + 130
+    height = row3 + max(it_h, en_h) + 130
     legend(height - 70)
 
     svg = (
@@ -291,7 +317,7 @@ def main():
     parts_backup = list(parts)
     parts.clear()
     text(40, 44, "Puzzle — Class Diagram", 24, color="#1F1F1F", weight="bold")
-    text(40, 74, "Room Up · v0.1–v0.2 scope", 13, color="#777777")
+    text(40, 74, "Room Up · v0.2 Puzzle Complete", 13, color="#777777")
     title = list(parts)
     parts.clear()
     parts.extend(parts_backup)

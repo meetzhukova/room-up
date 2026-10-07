@@ -178,91 +178,73 @@ def navigation():
 
 
 def one_move():
-    c = Chart("one-move", "Puzzle — One Move", 1000, 1440)
+    c = Chart("one-move", "Puzzle — One Tap", 1000, 1440)
 
-    c.node(500, 140, "Wait for input", "term")
-    c.node(500, 230, "Player presses a cell")
-    c.node(500, 340, "Is there\nan item?", "decision", w=220, h=110)
-    c.node(500, 460, "Start dotted line")
-    c.node(500, 590, "Finger moved\nor released?", "decision", w=240, h=120)
-    c.node(200, 740, "Next cell empty\nor same type?", "decision", w=250, h=120)
-    c.node(200, 880, "Extend line", w=200)
-    c.node(500, 760, "Released on\nsame type?", "decision", w=240, h=120)
-    c.node(760, 760, "Remove line", w=180)
-    c.node(500, 890, "Match pair")
-    c.node(500, 1030, "Uncaptured\nsame-type\nneighbours?", "decision", w=260, h=140)
-    c.node(200, 1030, "Capture\nneighbours", w=200, h=60)
-    c.node(500, 1160, "Remove matched\nand captured items", w=240, h=60)
-    c.node(500, 1260, "Add coins")
-    c.node(500, 1360, "Back to input", "term")
+    c.node(500, 140, "Wait for tap", "term")
+    c.node(500, 230, "Player taps a cell")
+    c.node(500, 340, "Is the cell\nempty?", "decision", w=220, h=110)
+    c.node(500, 470, "Find the nearest item\nin each of 4 directions", w=300, h=60)
+    c.node(500, 600, "Any type found\n2 or more times?", "decision", w=260, h=120)
+    c.node(500, 730, "Show dotted links")
+    c.node(500, 820, "Remove matched items", w=240)
+    c.node(500, 910, "Block cleared cells\nfor spawning (1.5 s)", w=260, h=60)
+    c.node(500, 1030, "3 or more\nitems?", "decision", w=220, h=110)
+    c.node(200, 1030, "Add combo bonus\nShow \"Combo!\"", w=220, h=60)
+    c.node(500, 1150, "Add coins")
+    c.node(500, 1240, "Update coin counter", w=240)
+    c.node(500, 1340, "Back to input", "term")
 
-    # main spine
     c.edge([(500, 166), (500, 204)])
     c.edge([(500, 256), (500, 285)])
-    c.edge([(500, 395), (500, 434)], "Yes", (515, 414), anchor="start")
-    c.edge([(500, 486), (500, 530)])
+    c.edge([(500, 395), (500, 440)], "Yes", (515, 417), anchor="start")
+    c.edge([(500, 500), (500, 540)])
+    c.edge([(500, 660), (500, 704)], "Yes", (515, 682), anchor="start")
+    c.edge([(500, 756), (500, 794)])
+    c.edge([(500, 846), (500, 880)])
+    c.edge([(500, 940), (500, 975)])
 
-    # No item -> back to input
-    c.edge([(610, 340), (920, 340), (920, 1360), (610, 1360)], "No", (630, 324), anchor="start")
+    c.edge([(610, 340), (900, 340), (900, 1340), (610, 1340)], "No", (630, 324), anchor="start")
+    c.edge([(630, 600), (900, 600)], "No", (650, 584), anchor="start", arrow=False)
+    c.junction(900, 600)
 
-    # Moved -> check next cell
-    c.edge([(380, 590), (200, 590), (200, 680)], "Moved", (360, 574), anchor="end")
-    c.edge([(200, 800), (200, 854)], "Yes", (215, 827), anchor="start")
-    # return loop (Extend line / No) back into the spine above the "moved or released" check
-    c.edge([(100, 880), (40, 880), (40, 510), (492, 510)])
-    c.edge([(75, 740), (40, 740)], "No", (58, 724), arrow=False)
-    c.junction(40, 740)
-
-    # Released -> same type?
-    c.edge([(500, 650), (500, 700)], "Released", (515, 675), anchor="start")
-    # Not same type -> remove line -> back to input
-    c.edge([(620, 760), (670, 760)], "No", (645, 744))
-    c.edge([(760, 786), (760, 1360)], arrow=False)
-    c.junction(760, 1360)
-    # Same type -> match
-    c.edge([(500, 820), (500, 864)], "Yes", (515, 842), anchor="start")
-    c.edge([(500, 916), (500, 960)])
-
-    # Group capture loop
-    c.edge([(370, 1030), (300, 1030)], "Yes", (335, 1014))
-    c.edge([(200, 1000), (200, 940), (492, 940)])
-    c.edge([(500, 1100), (500, 1130)], "No", (515, 1115), anchor="start")
-
-    c.edge([(500, 1190), (500, 1234)])
-    c.edge([(500, 1286), (500, 1334)])
+    c.edge([(390, 1030), (310, 1030)], "Yes", (350, 1014))
+    c.edge([(200, 1060), (200, 1150), (390, 1150)])
+    c.edge([(500, 1085), (500, 1124)], "No", (515, 1104), anchor="start")
+    c.edge([(500, 1176), (500, 1214)])
+    c.edge([(500, 1266), (500, 1314)])
 
     c.legend(1410, [("term", "Start / End"), ("action", "Action"), ("decision", "Decision")])
     c.save()
 
 
 def spawn_tick():
-    c = Chart("spawn-tick", "Puzzle — Spawn Tick", 1000, 960)
+    c = Chart("spawn-tick", "Puzzle — Spawn Tick", 1000, 1080)
 
     c.node(450, 140, "Spawn timer fires", "term")
-    c.node(450, 260, "Is there an\nempty cell?", "decision", w=240, h=120)
-    c.node(150, 260, "End round", "danger", w=200)
-    c.node(150, 380, "Show Round\nResults", "term", w=200, h=60)
-    c.node(450, 420, "Helper spawn\nroll (30%)\nsucceeded?", "decision", w=260, h=140)
-    c.node(760, 560, "Stuck item with\nan empty\nneighbour?", "decision", w=260, h=140)
-    c.node(450, 720, "Spawn random type\nin random empty cell", w=240, h=60)
-    c.node(760, 720, "Spawn same type\nnext to stuck item", w=240, h=60)
-    c.node(605, 850, "Restart spawn timer", "term", w=240)
+    c.node(450, 230, "Pick how many items (1–3)", w=300)
+    c.node(450, 360, "Is there an\nempty cell?", "decision", w=240, h=120)
+    c.node(780, 360, "End round", "danger", w=200)
+    c.node(780, 460, "Show Round Over", "term", w=200)
+    c.node(450, 530, "Helper roll (30%)\nand a helper\nplace found?", "decision", w=260, h=140)
+    c.node(450, 690, "Spawn a random item\nin a free cell", w=260, h=60)
+    c.node(770, 690, "Spawn the same type as\nan existing item, so one\ntap can match them", w=280, h=80)
+    c.node(450, 820, "More items\nto spawn?", "decision", w=240, h=120)
+    c.node(450, 970, "Restart timer\n(3% shorter; faster if the\nboard is less than 30% full)", "term", w=360, h=80)
 
-    c.edge([(450, 166), (450, 200)])
-    c.edge([(330, 260), (250, 260)], "No", (290, 244))
-    c.edge([(150, 286), (150, 350)])
-    c.edge([(450, 320), (450, 350)], "Yes", (465, 335), anchor="start")
+    c.edge([(450, 166), (450, 204)])
+    c.edge([(450, 256), (450, 300)])
+    c.edge([(570, 360), (680, 360)], "No", (625, 344))
+    c.edge([(780, 386), (780, 434)])
+    c.edge([(450, 420), (450, 460)], "Yes", (465, 440), anchor="start")
+    c.edge([(450, 600), (450, 660)], "No", (465, 630), anchor="start")
+    c.edge([(580, 530), (770, 530), (770, 650)], "Yes", (600, 514), anchor="start")
+    c.edge([(450, 720), (450, 760)])
+    c.edge([(770, 730), (770, 820), (570, 820)])
 
-    c.edge([(580, 420), (760, 420), (760, 490)], "Yes", (600, 404), anchor="start")
-    c.edge([(450, 490), (450, 690)], "No", (465, 520), anchor="start")
-    c.edge([(630, 560), (450, 560)], "No", (610, 544), anchor="end", arrow=False)
-    c.junction(450, 560)
-    c.edge([(760, 630), (760, 690)], "Yes", (775, 660), anchor="start")
+    c.edge([(330, 820), (300, 820), (300, 290), (442, 290)], "Yes", (315, 804), anchor="start")
+    c.edge([(450, 880), (450, 930)], "No", (465, 905), anchor="start")
 
-    c.edge([(450, 750), (450, 850), (485, 850)])
-    c.edge([(760, 750), (760, 850), (725, 850)])
-
-    c.legend(930, [("term", "Start / End"), ("action", "Action"), ("decision", "Decision"), ("danger", "Ends round")])
+    c.legend(1050, [("term", "Start / End"), ("action", "Action"), ("decision", "Decision"), ("danger", "Ends round")])
     c.save()
 
 

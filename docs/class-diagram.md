@@ -1,6 +1,6 @@
 # Class Diagram — Puzzle
 
-This document describes the classes of the **puzzle** part of **Room Up** (working title) — the scope of milestones **v0.1 Puzzle Prototype** and **v0.2 Puzzle Complete**.
+This document describes the classes of the **puzzle** part of **Room Up** (working title), as of milestone **v0.2 Puzzle Complete**.
 Room, shop and save classes will be added in later milestones.
 
 ![Puzzle — Class Diagram](diagrams/class-diagram.png)
@@ -16,44 +16,54 @@ Room, shop and save classes will be added in later milestones.
 | `+` / `-` | public / private |
 | `Name(param: Type): ReturnType` | method signature |
 | Filled diamond ◆ | **Composition** — the owner creates the part, and the part does not exist without it |
-| Hollow diamond ◇ | **Aggregation** — the owner uses the part, but the part lives longer |
-| Dashed arrow | **Dependency** — the class only receives the other one as a method parameter |
+| Hollow diamond ◇ | **Aggregation** — the owner receives the part from outside, and the part can live longer |
+| Dashed arrow | **Dependency** — the class only uses the other one as a parameter or a return value |
 | `1`, `0..80` | **Multiplicity** — how many objects take part in the relation |
+
+---
+
+## Two Layers
+
+The code is split into two layers, so the game rules never depend on how things are drawn.
+
+| Layer | Classes | Knows about Unity scenes? |
+|---|---|---|
+| **Logic** (this diagram) | `PuzzleRound`, `Board`, `Spawner`, `SpawnSettings`, `Wallet`, `TapResult`, `Item`, `ItemType` | No — plain C# classes |
+| **Unity components** | `PuzzleController`, `BoardView`, `BoardInput`, `LineView`, `HudView`, `ResultsView`, `CameraFitter` | Yes — `MonoBehaviour`s on objects in the scene |
+
+`PuzzleController` connects the two: it creates the logic objects, forwards taps from `BoardInput` to `PuzzleRound`, and asks the views to redraw.
 
 ---
 
 ## Classes
 
-### `PuzzleRound` — the coordinator
-Runs one round of the puzzle. It does not draw anything and does not read touches itself: the UI layer calls `OnPress`, `OnDrag` and `OnRelease` with the cell under the finger, and `Update` every frame.
+### `PuzzleRound` — the rules of one round
+Owns the board, receives the wallet and the spawner from outside.
 
 | Member | Why it exists |
 |---|---|
-| `board`, `line`, `spawner` | Created by the round and destroyed with it (composition) |
-| `wallet` | Received in the constructor. The player's coins exist before and after a round (aggregation) |
-| `roundCoins` | Coins earned in this round only — shown on the Round Results screen |
-| `isOver` | Set when the board is full |
-| `StartRound()` | Clears the board and fills ~40% of the cells with random items |
-| `Update(deltaTime)` | Ticks the spawner. When `Tick` says "time to spawn", calls `SpawnItem`. If that returns `false`, the board is full → `EndRound()` |
-| `OnPress(cell)` | If the cell has an item → `line.Start(cell)` |
-| `OnDrag(cell)` | If the line is active and the cell is empty or holds the same type as the start → `line.TryExtend(cell)` |
-| `OnRelease(cell)` | If the line ends on another item → `TryMatch(start, end)`. Always clears the line |
-| `TryMatch(a, b)` | Checks `IsSameType`; on success collects `FindGroup(a)` + `FindGroup(b)`, removes them, adds coins. Returns whether a match happened |
-| `CalculateReward(count)` | Turns the number of removed items into coins (rules: GDD §5.5) |
+| `StartRound(startFill)` | Fills ~40% of the board with random items |
+| `Update(deltaTime)` | Ticks the spawner. Returns `true` when new items appeared, so the view can redraw. Sets `isOver` when an item cannot fit |
+| `Tap(cell)` | The core rule: from an empty cell, finds the nearest item in each direction, removes every type found 2+ times, blocks the cleared cells for spawning and pays the reward. Returns a `TapResult` |
+| `CalculateReward(count)` | 2 coins per item, +3 per item above two for a combo |
+
+### `TapResult` — what one tap did
+Read-only result object: matched cells, reward and whether it was a combo. The controller uses it to draw the links and update the HUD.
 
 ### `Board` — the grid
-Knows what is in every cell. The single source of truth for item positions.
+The single source of truth for item positions.
 
-- `FindGroup(start)` returns the start cell plus every **connected** cell with an item of the same type (up / down / left / right, spreading further from each found cell). This is the **Group Capture** rule from the GDD.
-
-### `Line` — the dotted line
-Stores the path as a list of cells. Knows nothing about items.
-
-- `TryExtend(cell)` returns `false` if the cell is not a neighbour of the current end, or is already part of the line.
+- `FindNearestInCross(origin)` walks up, down, left and right from `origin` and returns the first item cell found in each direction (0–4 cells).
+- `GetFillRatio()` — the share of filled cells, used by the spawner to speed up on an almost empty board.
 
 ### `Spawner` — new items over time
-- `Tick(deltaTime)` counts time and returns `true` when it is time to spawn.
-- `SpawnItem(board)` places one item (with the helper-spawn chance) and returns `false` if the board is full.
+- `Tick(deltaTime, fillRatio)` counts time and returns `true` when it is time to spawn. The interval gets 3% shorter after each spawn and is shorter while the board is less than 30% full.
+- `SpawnBatch(board)` places 1–3 items. Returns `0` if the board is full — this ends the round.
+- `TrySpawnHelper(board)` places an item so that an empty cell sees it and an existing item of the same type.
+- `BlockCells(cells)` / `IsBlocked(cell)` — cleared cells cannot receive new items for a short time.
+
+### `SpawnSettings` — tuning
+All spawn numbers in one `[System.Serializable]` class, shown as one group in the Inspector of `PuzzleController`.
 
 ### `Wallet` — coins
 Only counts. It does not know *why* coins are added or *what* they are spent on.
@@ -65,9 +75,10 @@ An item only knows its type. Its position lives in `Board`.
 
 ## Design Principles Used
 
-- **Single responsibility** — each class has one job: `Board` stores, `Line` tracks the path, `Wallet` counts, `PuzzleRound` coordinates.
+- **Single responsibility** — each class has one job: `Board` stores, `Spawner` adds items, `Wallet` counts, `PuzzleRound` applies the rules.
 - **Single source of truth** — every piece of data lives in exactly one place (e.g. positions only in `Board`).
-- **Logic separate from UI** — none of these classes draw or read input. This keeps them testable and makes it easy to change the visuals later.
+- **Logic separate from Unity** — logic classes do not draw or read input, so they are easy to test and the visuals can change without touching the rules.
+- **Dependencies passed in** — `PuzzleRound` receives `Wallet` and `Spawner` in its constructor instead of creating them, so a new round can start with the same wallet.
 
 ---
 
@@ -80,22 +91,26 @@ classDiagram
 
     class PuzzleRound {
         -Board board
-        -Line line
-        -Spawner spawner
         -Wallet wallet
+        -Spawner spawner
         -int roundCoins
         -bool isOver
-        +PuzzleRound(Wallet wallet)
-        +StartRound() void
-        +Update(float deltaTime) void
-        +OnPress(Vector2Int cell) void
-        +OnDrag(Vector2Int cell) void
-        +OnRelease(Vector2Int cell) void
+        +PuzzleRound(int width, int height, Wallet wallet, Spawner spawner)
+        +StartRound(float startFill) void
+        +Update(float deltaTime) bool
+        +Tap(Vector2Int cell) TapResult
         +GetRoundCoins() int
+        +GetBoard() Board
         +IsOver() bool
-        -TryMatch(Vector2Int a, Vector2Int b) bool
         -CalculateReward(int count) int
-        -EndRound() void
+        -CountSameType(List~Vector2Int~ cells, Item item) int
+    }
+
+    class TapResult {
+        +List~Vector2Int~ MatchedCells
+        +int Reward
+        +bool IsCombo
+        +TapResult(List~Vector2Int~ cells, int reward, bool isCombo)
     }
 
     class Wallet {
@@ -109,6 +124,9 @@ classDiagram
         -int width
         -int height
         -Item[,] cells
+        +GetWidth() int
+        +GetHeight() int
+        +GetFillRatio() float
         +IsInside(Vector2Int cell) bool
         +IsEmpty(Vector2Int cell) bool
         +GetItem(Vector2Int cell) Item
@@ -116,32 +134,43 @@ classDiagram
         +RemoveItem(Vector2Int cell) void
         +HasEmptyCell() bool
         +GetEmptyCells() List~Vector2Int~
-        +FindGroup(Vector2Int start) List~Vector2Int~
-    }
-
-    class Line {
-        -List~Vector2Int~ cells
-        +Start(Vector2Int cell) void
-        +TryExtend(Vector2Int cell) bool
-        +GetStart() Vector2Int
-        +GetEnd() Vector2Int
-        +IsActive() bool
-        +Clear() void
+        +GetItemCells() List~Vector2Int~
+        +FindNearestInCross(Vector2Int origin) List~Vector2Int~
     }
 
     class Spawner {
+        -SpawnSettings settings
         -float interval
-        -float minInterval
         -float timer
-        -float helperChance
-        +Tick(float deltaTime) bool
+        -Dictionary~Vector2Int, float~ blockedCells
+        +Spawner(SpawnSettings settings)
+        +Tick(float deltaTime, float fillRatio) bool
+        +GetCurrentInterval(float fillRatio) float
+        +SpawnBatch(Board board) int
         +SpawnItem(Board board) bool
+        +BlockCells(IEnumerable~Vector2Int~ cells) void
+        +IsBlocked(Vector2Int cell) bool
+        -TrySpawnHelper(Board board) bool
+        -SpawnRandom(Board board) void
+    }
+
+    class SpawnSettings {
+        <<serializable>>
+        +float startInterval
+        +float minInterval
+        +float speedUp
+        +float lowFillThreshold
+        +float lowFillMultiplier
+        +float extraItemChance
+        +int maxItemsPerSpawn
+        +float clearedCellCooldown
+        +float helperChance
     }
 
     class Item {
         -ItemType type
         +Item(ItemType type)
-        +GetType() ItemType
+        +GetItemType() ItemType
         +IsSameType(Item other) bool
     }
 
@@ -156,12 +185,13 @@ classDiagram
     }
 
     PuzzleRound *-- "1" Board
-    PuzzleRound *-- "1" Line
-    PuzzleRound *-- "1" Spawner
+    PuzzleRound o-- "1" Spawner
     PuzzleRound o-- "1" Wallet
+    PuzzleRound ..> TapResult : creates
+    Spawner o-- "1" SpawnSettings
+    Spawner ..> Board : uses
     Board *-- "0..80" Item
     Item --> ItemType
-    Spawner ..> Board : uses
 ```
 
 </details>

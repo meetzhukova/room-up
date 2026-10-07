@@ -4,11 +4,11 @@
 
 | | |
 |---|---|
-| **Status** | Draft v0.3 |
+| **Status** | v0.4 — updated after v0.2 Puzzle Complete |
 | **Author** | Polina Zhukova |
-| **Engine** | Unity (latest LTS), C# |
+| **Engine** | Unity 6, C# |
 | **Platform** | Mobile: Android (v1.0), iOS (later) |
-| **Controls** | Touch: tap and drag |
+| **Controls** | Touch: tap (puzzle), tap and drag (room) |
 | **Orientation** | Portrait 9:16 |
 | **Genre** | Casual puzzle + cozy room decoration |
 | **Art style** | Bright, saturated isometric pixel art |
@@ -20,7 +20,7 @@
 
 ## 1. Pitch
 
-A cozy pixel-art game where you connect matching items with a line to earn coins and spend them on furniture to decorate your own rooms.
+A cozy pixel-art game where you tap empty cells to match items, earn coins and spend them on furniture to decorate your own rooms.
 
 ## 2. Setting & Player Fantasy
 
@@ -56,30 +56,51 @@ Flow: `Main Menu → Room View ⇄ Puzzle → Round Results → Room View ⇄ Sh
 - v1.0 uses **6 item types**, shown as simple colors (red, blue, green, yellow, purple, orange).
 - At the start of a round **~40% of the cells** are filled with random items.
 
-### 5.3 Connecting
-- The player presses on an item and **drags a line** through **empty cells** (up, down, left, right — no diagonals).
-- The line is shown as a **dotted line** while dragging.
-- The line **cannot pass through other items**.
-- If the player releases on an item of the **same type** → **match**: both items disappear.
-- If the player releases anywhere else → the line disappears, nothing happens.
+### 5.3 Tap to Match
+- The player taps an **empty cell**.
+- From that cell the game looks in **four directions** — up, down, left, right — and takes the **first item** in each direction. Items behind it do not count.
+- Among these up to four items, every type that appears **two or more times** is matched: those items disappear.
+- Two different pairs can match with one tap (e.g. 2 yellow + 2 blue).
+- A short dotted link is drawn from the tapped cell to each matched item, then they disappear.
+- Tapping an item, or an empty cell that sees no pair, does nothing.
 
-### 5.4 Group Capture (Combo)
-- When a pair is matched, every item of the **same type** that touches either of the two items (up / down / left / right) is **captured** too, and disappears with them.
-- Captured items keep spreading: a same-type item touching a captured one is also captured.
-- Example: connect green → green, and a third green stands next to one of them → all three disappear.
+```
+  ·  ·  ·  🟨 ·  ·
+  ·  ·  ·  ·  ·  ·
+  🟨 ·  ·  ✕  ·  🟦      tap ✕ → 2 yellow + 2 blue disappear
+  ·  ·  ·  ·  ·  ·
+  ·  ·  ·  🟦 ·  ·
+```
+
+### 5.4 Combo
+- **3 or 4 items** removed by one tap is a **combo**.
+- A combo shows a short "Combo! +N" message.
 
 ### 5.5 Rewards
-- **2 coins** for each matched item.
-- **+3 coins** bonus for each captured item.
+- **2 coins** for each removed item.
+- Combo bonus: **+3 coins** for each item above two.
+
+| Items removed | Coins |
+|---|---|
+| 2 | 4 |
+| 3 (combo) | 9 |
+| 4 (combo) | 14 |
+
+- Coins earned in the round are shown at the top of the screen and also go to the player's wallet.
 
 ### 5.6 Spawning
-- **One** new item appears every **6 seconds** in a random empty cell — slow on purpose, because the player needs time to think.
-- The interval becomes shorter during the round (minimum 3 seconds).
-- **Helper spawn:** sometimes (30% chance) the new item gets the same type as an item that currently cannot be connected to anything, and appears right next to it — so the player can match them at once.
+- New items appear in random empty cells on a timer.
+- The first interval is **3 s**; each spawn makes the next one **3% shorter**, down to **1 s**.
+- **Low fill boost:** when less than **30%** of the board is filled, items appear faster — up to **4×** faster on an empty board.
+- **Several at once:** each spawn has a **30%** chance to add one more item, up to **3** items at once.
+- **Helper spawn:** **30%** of new items are placed so that an empty cell sees them and an existing item of the same type — a guaranteed possible match.
+- **Cleared cells** cannot receive new items for **1.5 s**, so items never pop up right where the player just cleared.
+- All numbers are tuned in `SpawnSettings` in the Inspector.
 
 ### 5.7 End of Round
-- The round ends when a new pair cannot fit: the **board is full**.
+- The round ends when a new item cannot fit: the **board is full**.
 - The player always **keeps** the coins earned. No punishment — a short round just means fewer coins.
+- The **Round Over** screen shows the coins of the round and the best score (saved on the device), with **Play Again** and **Home**.
 
 ### 5.8 Difficulty (designed now, used later)
 - Difficulty is controlled by the **number of item types**: more types = harder to find pairs = more coins.
@@ -122,7 +143,7 @@ Saved automatically on the device:
 ## 9. Screen & UI
 
 - **Portrait 9:16**, made for phones.
-- Pixel-perfect rendering: base resolution **360 × 640**, scaled ×2 / ×3 (×3 = 1080 × 1920).
+- The camera fits the board to the screen width on any phone (`CameraFitter`). Pixel-perfect rendering is planned for v0.5, when the final pixel art is added.
 - Taller phones get extra background space at the top and bottom; gameplay stays inside the safe 9:16 area (away from the camera notch).
 - Day-to-day testing on the computer with Unity's **Device Simulator**; regular checks on a real Android phone.
 - Buttons and items big enough for a finger; no actions that need hover or two fingers.
@@ -151,8 +172,8 @@ Saved for later versions:
 
 | Version | Milestone | Goal |
 |---|---|---|
-| v0.1 | Puzzle Prototype | Grid, items, drag a line, matching — with placeholder squares |
-| v0.2 | Puzzle Complete | Group capture, coins, spawning, end of round, results |
+| v0.1 | Puzzle Prototype | Grid, items, matching — with placeholder squares ✅ |
+| v0.2 | Puzzle Complete | Tap to match, combo, coins, spawning, end of round, results ✅ |
 | v0.3 | Room Prototype | Isometric grid, place / move / rotate furniture |
 | v0.4 | Shop & Save | Shop, inventory, economy, saving |
 | v0.5 | Art & UI | Pixel art, menus, polish |

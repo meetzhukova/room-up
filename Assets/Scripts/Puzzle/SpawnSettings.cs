@@ -16,6 +16,9 @@ public class SpawnSettings
     [Range(0f, 1f)] public float extraItemChance = 0.3f;
     [Range(1, 5)] public int maxItemsPerSpawn = 3;
 
+    [Header("Cleared cells")]
+    public float clearedCellCooldown = 1.5f;
+
     [Header("Helper spawn")]
     [Range(0f, 1f)] public float helperChance = 0.3f;
 }

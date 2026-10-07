@@ -32,7 +32,7 @@ public class PuzzleController : MonoBehaviour
         hudView = GetComponent<HudView>();
         resultsView = GetComponent<ResultsView>();
 
-        wallet = new Wallet();
+        wallet = Game.Progress.GetWallet();
     }
 
     private void Start()
@@ -89,7 +89,7 @@ public class PuzzleController : MonoBehaviour
 
     private void GoHome()
     {
-        StartNewRound();
+        Game.OpenRoom();
     }
 
     private void EndRound()

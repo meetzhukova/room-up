@@ -42,6 +42,7 @@ public class RoomController : MonoBehaviour
         roomHud.RotateClicked += OnRotateClicked;
         roomHud.PlaceClicked += OnPlaceClicked;
         roomHud.StoreClicked += OnStoreClicked;
+        roomHud.PlayClicked += OnPlayClicked;
     }
 
     private void OnDisable()
@@ -52,20 +53,44 @@ public class RoomController : MonoBehaviour
         roomHud.RotateClicked -= OnRotateClicked;
         roomHud.PlaceClicked -= OnPlaceClicked;
         roomHud.StoreClicked -= OnStoreClicked;
+        roomHud.PlayClicked -= OnPlayClicked;
     }
 
     private void Start()
     {
-        grid = new RoomGrid(size, wallHeight);
-        inventory = new Inventory();
-        foreach (FurnitureData item in startItems)
+        PlayerProgress progress = Game.Progress;
+        inventory = progress.GetInventory();
+
+        if (progress.IsNew())
         {
-            inventory.Add(item);
+            foreach (FurnitureData item in startItems)
+            {
+                inventory.Add(item);
+            }
+            progress.MarkStarted();
+        }
+
+        grid = new RoomGrid(size, wallHeight);
+        foreach (PlacedFurniture furniture in progress.GetPlaced())
+        {
+            grid.Place(furniture);
         }
 
         roomView.Show(grid);
+        roomHud.SetCoins(progress.GetWallet().GetCoins());
         furnitureView.Refresh(grid.GetPlaced());
         roomHud.ShowInventory(inventory.GetItems());
+    }
+
+    private void OnPlayClicked()
+    {
+        if (moving != null)
+        {
+            inventory.Add(moving.GetData());
+            moving = null;
+        }
+
+        Game.OpenPuzzle();
     }
 
     private void OnItemClicked(int index)
@@ -150,6 +175,7 @@ public class RoomController : MonoBehaviour
         }
 
         grid.Remove(furniture);
+        Game.Progress.SetPlaced(grid.GetPlaced());
         furnitureView.Refresh(grid.GetPlaced());
         BeginPlacing(furniture);
     }
@@ -183,6 +209,7 @@ public class RoomController : MonoBehaviour
     private void EndPlacing()
     {
         moving = null;
+        Game.Progress.SetPlaced(grid.GetPlaced());
         furnitureView.HideGhost();
         roomView.SetGridVisible(false);
         furnitureView.Refresh(grid.GetPlaced());

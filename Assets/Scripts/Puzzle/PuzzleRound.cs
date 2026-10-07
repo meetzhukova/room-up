@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzleRound
 {
     private Board board;
-    private Line line = new Line();
 
     public PuzzleRound(int width, int height)
     {
@@ -13,11 +13,6 @@ public class PuzzleRound
     public Board GetBoard()
     {
         return board;
-    }
-
-    public Line GetLine()
-    {
-        return line;
     }
 
     public void StartRound(float startFill)
@@ -39,75 +34,45 @@ public class PuzzleRound
         }
     }
 
-    public void OnPress(Vector2Int cell)
+    public List<Vector2Int> Tap(Vector2Int cell)
     {
-        if (board.GetItem(cell) == null)
+        List<Vector2Int> matched = new List<Vector2Int>();
+
+        if (!board.IsEmpty(cell))
         {
-            return;
+            return matched;
         }
 
-        line.Start(cell);
-    }
+        List<Vector2Int> found = board.FindNearestInCross(cell);
 
-    public void OnDrag(Vector2Int cell)
-    {
-        if (!line.IsActive())
+        foreach (Vector2Int candidate in found)
         {
-            return;
+            if (CountSameType(found, board.GetItem(candidate)) >= 2)
+            {
+                matched.Add(candidate);
+            }
         }
 
-        if (line.IsPreviousCell(cell))
+        foreach (Vector2Int matchedCell in matched)
         {
-            line.TryExtend(cell);
-            return;
+            board.RemoveItem(matchedCell);
         }
 
-        if (HasReachedItem())
-        {
-            return;
-        }
-
-        Item startItem = board.GetItem(line.GetStart());
-        Item item = board.GetItem(cell);
-
-        if (item != null && !item.IsSameType(startItem))
-        {
-            return;
-        }
-
-        line.TryExtend(cell);
-    }
-
-    public bool OnRelease(Vector2Int cell)
-    {
-        bool matched = false;
-
-        if (line.IsActive() && line.GetLength() > 1)
-        {
-            matched = TryMatch(line.GetStart(), line.GetEnd());
-        }
-
-        line.Clear();
         return matched;
     }
 
-    private bool TryMatch(Vector2Int a, Vector2Int b)
+    private int CountSameType(List<Vector2Int> cells, Item item)
     {
-        Item first = board.GetItem(a);
-        Item second = board.GetItem(b);
+        int count = 0;
 
-        if (first == null || !first.IsSameType(second))
+        foreach (Vector2Int cell in cells)
         {
-            return false;
+            if (board.GetItem(cell).IsSameType(item))
+            {
+                count++;
+            }
         }
 
-        board.RemoveItem(a);
-        board.RemoveItem(b);
-        return true;
-    }
-
-    private bool HasReachedItem()
-    {
-        return line.GetLength() > 1 && board.GetItem(line.GetEnd()) != null;
+        return count;
     }
 }

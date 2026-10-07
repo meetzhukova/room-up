@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoardView))]
+[DisallowMultipleComponent]
 public class LineView : MonoBehaviour
 {
     [SerializeField] private float dotSize = 0.45f;

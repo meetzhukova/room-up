@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class BoardView : MonoBehaviour
 {
     [SerializeField] private float cellSize = 2.5f;

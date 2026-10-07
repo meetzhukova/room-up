@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(BoardView))]
+[DisallowMultipleComponent]
 public class BoardInput : MonoBehaviour
 {
     public event Action<Vector2Int> Pressed;

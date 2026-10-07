@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 653753976}
   - component: {fileID: 653753978}
   - component: {fileID: 653753977}
+  - component: {fileID: 653753980}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -417,9 +418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1228d1598b644bdb3c2b75840ef8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardView
-  width: 8
-  height: 10
-  startFill: 0.4
   cellSize: 2.5
   cellColor: {r: 0.22, g: 0.24, b: 0.33, a: 1}
 --- !u!4 &653753975
@@ -462,6 +460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a0ea55e2f85462ba6ddc1454ea5b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleController
+  width: 8
+  height: 10
+  startFill: 0.4
+  linkShowTime: 0.15
 --- !u!114 &653753978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,6 +479,22 @@ MonoBehaviour:
   dotSize: 0.45
   dotsPerCell: 3
   dotColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &653753980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653753973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfa6fdded3de4e5bbef99559deda2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HudView
+  coinsFontSize: 72
+  comboFontSize: 60
+  comboColor: {r: 0.98, g: 0.84, b: 0.28, a: 1}
+  comboShowTime: 0.8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -3,11 +3,23 @@ using UnityEngine;
 
 public class PuzzleRound
 {
-    private Board board;
+    private const int CoinsPerItem = 2;
+    private const int ComboBonusPerItem = 3;
+    private const int ComboSize = 3;
 
-    public PuzzleRound(int width, int height)
+    private Board board;
+    private Wallet wallet;
+    private int roundCoins;
+
+    public PuzzleRound(int width, int height, Wallet wallet)
     {
         board = new Board(width, height);
+        this.wallet = wallet;
+    }
+
+    public int GetRoundCoins()
+    {
+        return roundCoins;
     }
 
     public Board GetBoard()
@@ -34,13 +46,13 @@ public class PuzzleRound
         }
     }
 
-    public List<Vector2Int> Tap(Vector2Int cell)
+    public TapResult Tap(Vector2Int cell)
     {
         List<Vector2Int> matched = new List<Vector2Int>();
 
         if (!board.IsEmpty(cell))
         {
-            return matched;
+            return new TapResult(matched, 0, false);
         }
 
         List<Vector2Int> found = board.FindNearestInCross(cell);
@@ -58,7 +70,23 @@ public class PuzzleRound
             board.RemoveItem(matchedCell);
         }
 
-        return matched;
+        int reward = CalculateReward(matched.Count);
+        roundCoins += reward;
+        wallet.AddCoins(reward);
+
+        return new TapResult(matched, reward, matched.Count >= ComboSize);
+    }
+
+    private int CalculateReward(int matchedCount)
+    {
+        int reward = matchedCount * CoinsPerItem;
+
+        if (matchedCount >= ComboSize)
+        {
+            reward += (matchedCount - 2) * ComboBonusPerItem;
+        }
+
+        return reward;
     }
 
     private int CountSameType(List<Vector2Int> cells, Item item)

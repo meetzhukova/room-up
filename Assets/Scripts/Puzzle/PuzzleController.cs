@@ -1,8 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoardView), typeof(BoardInput), typeof(LineView))]
+[RequireComponent(typeof(HudView))]
+[DisallowMultipleComponent]
 public class PuzzleController : MonoBehaviour
 {
     [SerializeField] private int width = 8;
@@ -13,6 +14,8 @@ public class PuzzleController : MonoBehaviour
     private BoardView boardView;
     private BoardInput boardInput;
     private LineView lineView;
+    private HudView hudView;
+    private Wallet wallet;
     private PuzzleRound round;
     private bool isAnimating;
 
@@ -21,8 +24,10 @@ public class PuzzleController : MonoBehaviour
         boardView = GetComponent<BoardView>();
         boardInput = GetComponent<BoardInput>();
         lineView = GetComponent<LineView>();
+        hudView = GetComponent<HudView>();
 
-        round = new PuzzleRound(width, height);
+        wallet = new Wallet();
+        round = new PuzzleRound(width, height, wallet);
         round.StartRound(startFill);
         boardView.Show(round.GetBoard());
     }
@@ -44,23 +49,30 @@ public class PuzzleController : MonoBehaviour
             return;
         }
 
-        List<Vector2Int> matched = round.Tap(cell);
+        TapResult result = round.Tap(cell);
 
-        if (matched.Count > 0)
+        if (result.MatchedCells.Count > 0)
         {
-            StartCoroutine(PlayMatch(cell, matched));
+            StartCoroutine(PlayMatch(cell, result));
         }
     }
 
-    private IEnumerator PlayMatch(Vector2Int origin, List<Vector2Int> matched)
+    private IEnumerator PlayMatch(Vector2Int origin, TapResult result)
     {
         isAnimating = true;
-        lineView.DrawLinks(origin, matched);
+        lineView.DrawLinks(origin, result.MatchedCells);
 
         yield return new WaitForSeconds(linkShowTime);
 
         lineView.Clear();
         boardView.Refresh();
+        hudView.SetCoins(round.GetRoundCoins());
+
+        if (result.IsCombo)
+        {
+            hudView.ShowCombo(result.Reward);
+        }
+
         isAnimating = false;
     }
 }

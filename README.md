@@ -14,7 +14,7 @@ Full design: [Game Design Document](docs/GDD.md)
 
 ## Status
 
-Puzzle and room prototypes work: a full puzzle round, and placing, moving and rotating furniture in the room. Next: v0.4 Shop & Save.
+The full game loop works with placeholder graphics: play the puzzle, earn coins, buy furniture, decorate the room. Progress is saved. Next: v0.5 Art & UI.
 
 | Version | Goal | Status |
 |---|---|---|
@@ -22,7 +22,7 @@ Puzzle and room prototypes work: a full puzzle round, and placing, moving and ro
 | v0.1 Puzzle Prototype | Board, items, matching | Done |
 | v0.2 Puzzle Complete | Tap to match, coins, spawning, results | Done |
 | v0.3 Room Prototype | Room grid, place and rotate furniture | Done |
-| v0.4 Shop & Save | Shop, inventory, saving | Planned |
+| v0.4 Shop & Save | Shop, inventory, saving | Done |
 | v0.5 Art & UI | Pixel art, menus | Planned |
 | v1.0 Release | Balance, bug fixes, Android build | Planned |
 
@@ -32,7 +32,7 @@ Tasks: [Milestones](https://github.com/sidequestion/room-up/milestones) · [Issu
 
 - [Game Design Document](docs/GDD.md) — rules, content, screens, scope
 - [Flowcharts](docs/flowcharts.md) — screen navigation and puzzle logic
-- [Class Diagrams](docs/class-diagram.md) — puzzle and room classes and their relations
+- [Class Diagrams](docs/class-diagram.md) — puzzle, room, shop and save classes
 
 ## Getting Started
 
@@ -42,7 +42,7 @@ Requirements: Unity Hub, Unity 6 with Android Build Support, Git.
 git clone https://github.com/sidequestion/room-up.git
 ```
 
-Open the folder in Unity Hub (**Add → Add project from disk**). Scenes are in `Assets/Scenes`: `Puzzle` and `Room`.
+Open the folder in Unity Hub (**Add → Add project from disk**). Scenes are in `Assets/Scenes`; start from `Room`, the home screen.
 
 ## Workflow
 

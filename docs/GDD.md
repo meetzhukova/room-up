@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | v0.5 — updated after v0.3 Room Prototype |
+| **Status** | v0.6 — updated after v0.4 Shop & Save |
 | **Author** | Polina Zhukova |
 | **Engine** | Unity 6, C# |
 | **Platform** | Mobile: Android (v1.0), iOS (later) |
@@ -126,7 +126,7 @@ Flow: `Main Menu → Room View ⇄ Puzzle → Round Results → Room View ⇄ Sh
 ### 6.3 Inventory
 - Bought items go to the **inventory** until they are placed.
 - In the room the inventory is a panel at the bottom of the screen with one button per item.
-- Until the shop exists (v0.4), the inventory is filled with a test list set in the Inspector.
+- A new game starts with an empty inventory; everything is bought in the shop.
 
 ### 6.4 Placing an Item
 1. Tap an item in the inventory → a **preview** of the item appears in the middle of the floor (wall items: on the right wall) and the grid becomes visible.
@@ -145,18 +145,40 @@ Flow: `Main Menu → Room View ⇄ Puzzle → Round Results → Room View ⇄ Sh
 
 ## 7. Shop & Economy
 
-- The shop sells **8 furniture items** in v1.0.
-- Prices: 20–150 coins.
+- The **Shop** button in the room opens the shop as a window over the room.
+- Each item card shows the color, name, footprint, floor or wall, and a **Buy** button with the price.
+- **Buy** is disabled when the player does not have enough coins.
+- A bought item goes to the inventory. Items can be bought more than once (two chairs).
+- The shop cannot be opened while an item is being placed.
+
+| Item | Footprint | Placed on | Price |
+|---|---|---|---|
+| Chair | 1×1 | Floor | 20 |
+| Plant | 1×1 | Floor | 25 |
+| Lamp | 1×1 | Floor | 30 |
+| Picture | 1×1 | Wall | 35 |
+| Shelf | 2×1 | Wall | 50 |
+| Table | 2×2 | Floor | 80 |
+| Bed | 1×2 | Floor | 120 |
+| Sofa | 1×2 | Floor | 150 |
+
+- The list lives in the `FurnitureCatalog` asset (`Assets/Resources`) and is edited in the Inspector.
 - Target: one puzzle round ≈ 20–50 coins, so the first item can be bought after 1–2 rounds.
 - All numbers will be tuned during playtesting.
 
 ## 8. Saving
 
-Saved automatically on the device:
+Saved automatically on the device in one file, `save.json`:
 - coins
 - inventory
-- placed furniture (item, position, rotation)
+- placed furniture (item, surface, cell, rotation)
 - best round score
+
+**When:** after a purchase, after an item is placed or stored, at the end of a round, when switching between the room and the puzzle, and when the app is paused or closed.
+
+**How:** items are saved by name and found again in the catalog on load. Items that no longer exist in the catalog are skipped; furniture that no longer fits goes back to the inventory. A broken save file starts a new game instead of crashing.
+
+**Testing:** the **Room Up** menu in the Unity editor has *Delete Save* and *Show Save File*.
 
 ## 9. Screen & UI
 
@@ -193,7 +215,7 @@ Saved for later versions:
 | v0.1 | Puzzle Prototype | Grid, items, matching — with placeholder squares ✅ |
 | v0.2 | Puzzle Complete | Tap to match, combo, coins, spawning, end of round, results ✅ |
 | v0.3 | Room Prototype | Isometric grid, place / move / rotate furniture ✅ |
-| v0.4 | Shop & Save | Shop, inventory, economy, saving |
+| v0.4 | Shop & Save | Shop, inventory, economy, saving ✅ |
 | v0.5 | Art & UI | Pixel art, menus, polish |
 | v1.0 | Release | Bug fixes, balance, Android build (APK on GitHub Releases / itch.io) |
 

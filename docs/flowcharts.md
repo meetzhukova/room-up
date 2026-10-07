@@ -53,39 +53,32 @@ flowchart TD
 
 ---
 
-## 2. Puzzle — One Move
+## 2. Puzzle — One Tap
 
-What happens when the player tries to connect two items.
+What happens when the player taps a cell.
 
-![Puzzle — One Move](diagrams/one-move.png)
+![Puzzle — One Tap](diagrams/one-move.png)
 
 <details>
 <summary>Mermaid source</summary>
 
 ```mermaid
 flowchart TD
-    Wait([Wait for input]) --> Press[Player presses a cell]
-    Press --> HasItem{"Is there an item?"}
-    HasItem -- "No" --> Wait
-    HasItem -- "Yes" --> Start[Start dotted line]
-
-    Start --> Action{"Finger moved or released?"}
-    Action -- "Moved" --> CanEnter{"Next cell empty or same type?"}
-    CanEnter -- "Yes" --> Extend[Extend line]
-    Extend --> Action
-    CanEnter -- "No" --> Action
-
-    Action -- "Released" --> Same{"Released on same type?"}
-    Same -- "No" --> Cancel[Remove line]
-    Cancel --> Wait
-
-    Same -- "Yes" --> Match[Match pair]
-    Match --> Neighbours{"Uncaptured same-type neighbours?"}
-    Neighbours -- "Yes" --> Capture[Capture neighbours]
-    Capture --> Neighbours
-    Neighbours -- "No" --> Remove[Remove matched and captured items]
-    Remove --> Coins[Add coins]
-    Coins --> Wait
+    Wait([Wait for tap]) --> Tap[Player taps a cell]
+    Tap --> Empty{"Is the cell empty?"}
+    Empty -- "No" --> Back([Back to input])
+    Empty -- "Yes" --> Find[Find the nearest item in each of 4 directions]
+    Find --> Pair{"Any type found 2 or more times?"}
+    Pair -- "No" --> Back
+    Pair -- "Yes" --> Links[Show dotted links]
+    Links --> Remove[Remove matched items]
+    Remove --> Block[Block cleared cells for spawning 1.5 s]
+    Block --> Combo{"3 or more items?"}
+    Combo -- "Yes" --> Bonus["Add combo bonus, show Combo!"]
+    Combo -- "No" --> Coins[Add coins]
+    Bonus --> Coins
+    Coins --> Counter[Update coin counter]
+    Counter --> Back
 ```
 
 </details>
@@ -94,7 +87,7 @@ flowchart TD
 
 ## 3. Puzzle — Spawn Tick
 
-Runs on a timer, independently from the player's moves. This is the only flow that ends a round.
+Runs on a timer, independently from the player's taps. This is the only flow that ends a round.
 
 ![Puzzle — Spawn Tick](diagrams/spawn-tick.png)
 
@@ -103,20 +96,19 @@ Runs on a timer, independently from the player's moves. This is the only flow th
 
 ```mermaid
 flowchart TD
-    Timer([Spawn timer fires]) --> Full{"Is there an empty cell?"}
-    Full -- "No" --> EndRound[End round]
-    EndRound --> Results([Show Round Results])
-
-    Full -- "Yes" --> Helper{"Helper spawn roll (30%) succeeded?"}
-    Helper -- "No" --> Random[Spawn random type in random empty cell]
-    Helper -- "Yes" --> Stuck{"Stuck item with an empty neighbour?"}
-    Stuck -- "No" --> Random
-    Stuck -- "Yes" --> Near[Spawn same type next to the stuck item]
-
-    Random --> Restart([Restart spawn timer])
-    Near --> Restart
+    Timer([Spawn timer fires]) --> Count["Pick how many items (1–3)"]
+    Count --> Empty{"Is there an empty cell?"}
+    Empty -- "No" --> EndRound[End round]
+    EndRound --> Results([Show Round Over])
+    Empty -- "Yes" --> Helper{"Helper roll 30% and a helper place found?"}
+    Helper -- "No" --> Random[Spawn a random item in a free cell]
+    Helper -- "Yes" --> Partner[Spawn the same type as an existing item, so one tap can match them]
+    Random --> More{"More items to spawn?"}
+    Partner --> More
+    More -- "Yes" --> Empty
+    More -- "No" --> Restart(["Restart timer: 3% shorter, faster if the board is less than 30% full"])
 ```
 
 </details>
 
-*A **stuck item** is an item that currently cannot be connected to any item of the same type.*
+*A **free cell** is an empty cell that was not cleared in the last 1.5 seconds.*

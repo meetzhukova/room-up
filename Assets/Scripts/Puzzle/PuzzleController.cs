@@ -2,10 +2,12 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(BoardView), typeof(BoardInput), typeof(LineView))]
-[RequireComponent(typeof(HudView))]
+[RequireComponent(typeof(HudView), typeof(ResultsView))]
 [DisallowMultipleComponent]
 public class PuzzleController : MonoBehaviour
 {
+    private const string BestScoreKey = "BestRoundCoins";
+
     [SerializeField] private int width = 8;
     [SerializeField] private int height = 10;
     [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
@@ -17,6 +19,7 @@ public class PuzzleController : MonoBehaviour
     private BoardInput boardInput;
     private LineView lineView;
     private HudView hudView;
+    private ResultsView resultsView;
     private Wallet wallet;
     private PuzzleRound round;
     private bool isAnimating;
@@ -27,35 +30,87 @@ public class PuzzleController : MonoBehaviour
         boardInput = GetComponent<BoardInput>();
         lineView = GetComponent<LineView>();
         hudView = GetComponent<HudView>();
+        resultsView = GetComponent<ResultsView>();
 
         wallet = new Wallet();
-        Spawner spawner = new Spawner(spawnSettings);
-        round = new PuzzleRound(width, height, wallet, spawner);
-        round.StartRound(startFill);
-        boardView.Show(round.GetBoard());
+    }
+
+    private void Start()
+    {
+        StartNewRound();
     }
 
     private void OnEnable()
     {
         boardInput.Pressed += OnPress;
+        resultsView.PlayAgainClicked += StartNewRound;
+        resultsView.HomeClicked += GoHome;
     }
 
     private void OnDisable()
     {
         boardInput.Pressed -= OnPress;
+        resultsView.PlayAgainClicked -= StartNewRound;
+        resultsView.HomeClicked -= GoHome;
     }
 
     private void Update()
     {
+        if (round == null || round.IsOver())
+        {
+            return;
+        }
+
         if (round.Update(Time.deltaTime))
         {
             boardView.Refresh();
         }
+
+        if (round.IsOver())
+        {
+            EndRound();
+        }
+    }
+
+    private void StartNewRound()
+    {
+        StopAllCoroutines();
+        isAnimating = false;
+        lineView.Clear();
+
+        Spawner spawner = new Spawner(spawnSettings);
+        round = new PuzzleRound(width, height, wallet, spawner);
+        round.StartRound(startFill);
+
+        boardView.Show(round.GetBoard());
+        hudView.SetCoins(0);
+        resultsView.Hide();
+    }
+
+    private void GoHome()
+    {
+        StartNewRound();
+    }
+
+    private void EndRound()
+    {
+        int roundCoins = round.GetRoundCoins();
+        int bestCoins = PlayerPrefs.GetInt(BestScoreKey, 0);
+        bool isNewBest = roundCoins > bestCoins;
+
+        if (isNewBest)
+        {
+            bestCoins = roundCoins;
+            PlayerPrefs.SetInt(BestScoreKey, bestCoins);
+            PlayerPrefs.Save();
+        }
+
+        resultsView.Show(roundCoins, bestCoins, isNewBest);
     }
 
     private void OnPress(Vector2Int cell)
     {
-        if (isAnimating)
+        if (isAnimating || round == null || round.IsOver())
         {
             return;
         }

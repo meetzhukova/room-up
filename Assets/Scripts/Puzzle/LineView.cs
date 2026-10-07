@@ -16,28 +16,27 @@ public class LineView : MonoBehaviour
         boardView = GetComponent<BoardView>();
     }
 
-    public void Draw(IReadOnlyList<Vector2Int> cells)
+    public void DrawLinks(Vector2Int origin, IReadOnlyList<Vector2Int> targets)
     {
         Clear();
 
-        dotsRoot = new GameObject("Line").transform;
+        dotsRoot = new GameObject("Links").transform;
         dotsRoot.SetParent(transform, false);
 
-        for (int i = 0; i < cells.Count - 1; i++)
-        {
-            Vector3 from = boardView.CellToWorld(cells[i]);
-            Vector3 to = boardView.CellToWorld(cells[i + 1]);
+        Vector3 from = boardView.CellToWorld(origin);
+        CreateDot(from);
 
-            for (int step = 0; step < dotsPerCell; step++)
+        foreach (Vector2Int target in targets)
+        {
+            Vector3 to = boardView.CellToWorld(target);
+            int distance = Mathf.Abs(target.x - origin.x) + Mathf.Abs(target.y - origin.y);
+            int dotCount = distance * dotsPerCell;
+
+            for (int step = 1; step <= dotCount; step++)
             {
-                float t = (float)step / dotsPerCell;
+                float t = (float)step / dotCount;
                 CreateDot(Vector3.Lerp(from, to, t));
             }
-        }
-
-        if (cells.Count > 0)
-        {
-            CreateDot(boardView.CellToWorld(cells[cells.Count - 1]));
         }
     }
 

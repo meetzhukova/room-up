@@ -98,4 +98,35 @@ public class Board
 
         return result;
     }
+
+    public List<Vector2Int> FindNearestInCross(Vector2Int origin)
+    {
+        List<Vector2Int> found = new List<Vector2Int>();
+
+        foreach (Vector2Int direction in Directions)
+        {
+            Vector2Int cell = origin + direction;
+
+            while (IsInside(cell))
+            {
+                if (GetItem(cell) != null)
+                {
+                    found.Add(cell);
+                    break;
+                }
+
+                cell += direction;
+            }
+        }
+
+        return found;
+    }
+
+    private static readonly Vector2Int[] Directions =
+    {
+        Vector2Int.up,
+        Vector2Int.down,
+        Vector2Int.left,
+        Vector2Int.right
+    };
 }

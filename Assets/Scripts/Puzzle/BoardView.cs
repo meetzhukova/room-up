@@ -51,6 +51,11 @@ public class BoardView : MonoBehaviour
 
     public Vector2Int WorldToCell(Vector3 worldPosition)
     {
+        if (board == null)
+        {
+            return new Vector2Int(-1, -1);
+        }
+
         Vector3 local = worldPosition - transform.position;
         int x = Mathf.RoundToInt(local.x / cellSize + (board.GetWidth() - 1) / 2f);
         int y = Mathf.RoundToInt(local.y / cellSize + (board.GetHeight() - 1) / 2f);

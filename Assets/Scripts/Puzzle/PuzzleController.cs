@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoardView), typeof(BoardInput), typeof(LineView))]
@@ -6,11 +8,13 @@ public class PuzzleController : MonoBehaviour
     [SerializeField] private int width = 8;
     [SerializeField] private int height = 10;
     [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
+    [SerializeField] private float linkShowTime = 0.15f;
 
     private BoardView boardView;
     private BoardInput boardInput;
     private LineView lineView;
     private PuzzleRound round;
+    private bool isAnimating;
 
     private void Awake()
     {
@@ -26,37 +30,37 @@ public class PuzzleController : MonoBehaviour
     private void OnEnable()
     {
         boardInput.Pressed += OnPress;
-        boardInput.Dragged += OnDrag;
-        boardInput.Released += OnRelease;
     }
 
     private void OnDisable()
     {
         boardInput.Pressed -= OnPress;
-        boardInput.Dragged -= OnDrag;
-        boardInput.Released -= OnRelease;
     }
 
     private void OnPress(Vector2Int cell)
     {
-        round.OnPress(cell);
-        lineView.Draw(round.GetLine().GetCells());
-    }
-
-    private void OnDrag(Vector2Int cell)
-    {
-        round.OnDrag(cell);
-        lineView.Draw(round.GetLine().GetCells());
-    }
-
-    private void OnRelease(Vector2Int cell)
-    {
-        bool matched = round.OnRelease(cell);
-        lineView.Clear();
-
-        if (matched)
+        if (isAnimating)
         {
-            boardView.Refresh();
+            return;
         }
+
+        List<Vector2Int> matched = round.Tap(cell);
+
+        if (matched.Count > 0)
+        {
+            StartCoroutine(PlayMatch(cell, matched));
+        }
+    }
+
+    private IEnumerator PlayMatch(Vector2Int origin, List<Vector2Int> matched)
+    {
+        isAnimating = true;
+        lineView.DrawLinks(origin, matched);
+
+        yield return new WaitForSeconds(linkShowTime);
+
+        lineView.Clear();
+        boardView.Refresh();
+        isAnimating = false;
     }
 }

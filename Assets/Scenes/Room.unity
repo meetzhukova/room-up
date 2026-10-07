@@ -281,6 +281,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1960558910}
   - component: {fileID: 1960558911}
+  - component: {fileID: 1960558915}
+  - component: {fileID: 1960558914}
+  - component: {fileID: 1960558913}
+  - component: {fileID: 1960558912}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -315,17 +319,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f88355f8f2f43529f58ae8d40a424d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomView
-  size: 5
-  wallHeight: 5
   tileWidth: 2
   tileHeight: 1
   wallCellHeight: 1.2
   lineWidth: 0.04
-  showGrid: 1
   floorColor: {r: 0.85, g: 0.65, b: 0.45, a: 1}
   leftWallColor: {r: 0.62, g: 0.75, b: 0.85, a: 1}
   rightWallColor: {r: 0.72, g: 0.84, b: 0.92, a: 1}
   gridColor: {r: 1, g: 1, b: 1, a: 0.5}
+--- !u!114 &1960558912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960558909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7646f9a6a0cc49c5b66c462c275a71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomController
+  size: 5
+  wallHeight: 5
+  startItems:
+  - name: Chair
+    size: {x: 1, y: 1}
+    isWallItem: 0
+    height: 1
+    color: {r: 0.9, g: 0.45, b: 0.4, a: 1}
+  - name: Bed
+    size: {x: 1, y: 2}
+    isWallItem: 0
+    height: 0.6
+    color: {r: 0.45, g: 0.6, b: 0.9, a: 1}
+  - name: Table
+    size: {x: 2, y: 2}
+    isWallItem: 0
+    height: 0.8
+    color: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  - name: Lamp
+    size: {x: 1, y: 1}
+    isWallItem: 0
+    height: 1.8
+    color: {r: 0.98, g: 0.84, b: 0.3, a: 1}
+  - name: Picture
+    size: {x: 1, y: 1}
+    isWallItem: 1
+    height: 0
+    color: {r: 0.55, g: 0.8, b: 0.5, a: 1}
+  - name: Shelf
+    size: {x: 2, y: 1}
+    isWallItem: 1
+    height: 0
+    color: {r: 0.75, g: 0.55, b: 0.85, a: 1}
+--- !u!114 &1960558913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960558909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb748853e8d948d3b86191b6785487d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomHud
+  panelColor: {r: 0.16, g: 0.17, b: 0.24, a: 0.9}
+  buttonColor: {r: 0.29, g: 0.53, b: 0.96, a: 1}
+  placeColor: {r: 0.3, g: 0.75, b: 0.4, a: 1}
+--- !u!114 &1960558914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960558909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2772612ee3fd4a03ba13282a519f20e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomInput
+--- !u!114 &1960558915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960558909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978bb13d5cebc4367b1a61f9cd745991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureView
+  rightSideShade: 0.8
+  leftSideShade: 0.65
+  frontMarkShade: 0.5
+  frontMarkWidth: 0.15
+  wallFrameWidth: 0.1
+  ghostAlpha: 0.75
+  invalidColor: {r: 0.95, g: 0.3, b: 0.3, a: 0.75}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

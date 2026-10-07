@@ -15,4 +15,7 @@ public class SpawnSettings
     [Header("Several items at once")]
     [Range(0f, 1f)] public float extraItemChance = 0.3f;
     [Range(1, 5)] public int maxItemsPerSpawn = 3;
+
+    [Header("Helper spawn")]
+    [Range(0f, 1f)] public float helperChance = 0.3f;
 }

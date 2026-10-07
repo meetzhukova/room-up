@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | v0.4 — updated after v0.2 Puzzle Complete |
+| **Status** | v0.5 — updated after v0.3 Room Prototype |
 | **Author** | Polina Zhukova |
 | **Engine** | Unity 6, C# |
 | **Platform** | Mobile: Android (v1.0), iOS (later) |
@@ -39,7 +39,7 @@ Play a puzzle round → earn coins → buy furniture in the shop
 | Mode | Purpose |
 |---|---|
 | **Room View** | Home screen. An isometric room seen as a "cube" with two walls. Player places, moves and rotates furniture. Buttons: Play, Shop, Inventory |
-| **Puzzle** | A round of the connect-the-pairs puzzle. Earns coins |
+| **Puzzle** | A round of the tap-to-match puzzle. Earns coins |
 | **Round Results** | Coins earned in the round, best score |
 | **Shop** | Catalog of furniture to buy with coins |
 
@@ -118,12 +118,30 @@ Flow: `Main Menu → Room View ⇄ Puzzle → Round Results → Room View ⇄ Sh
 ### 6.2 Furniture
 - Each item has a **footprint** in cells: 1×1, 1×2 or 2×2.
 - Items snap to the grid and **cannot overlap**. To put something where the bed stands, the player must first move the bed.
-- Items can be **rotated** in 4 directions (0°, 90°, 180°, 270°).
+- Floor items can be **rotated** in 4 directions (0°, 90°, 180°, 270°). A 1×2 item turns into 2×1 when rotated.
+- Wall items are not rotated.
 - **Floor items** go on the floor. **Wall items** (pictures, posters, shelves) go on the two visible walls.
 - Items can be moved again or put back into the inventory at any time.
 
 ### 6.3 Inventory
 - Bought items go to the **inventory** until they are placed.
+- In the room the inventory is a panel at the bottom of the screen with one button per item.
+- Until the shop exists (v0.4), the inventory is filled with a test list set in the Inspector.
+
+### 6.4 Placing an Item
+1. Tap an item in the inventory → a **preview** of the item appears in the middle of the floor (wall items: on the right wall) and the grid becomes visible.
+2. Drag anywhere in the room → the preview follows the finger and snaps to the cells. It never leaves the floor or the wall.
+3. The preview is shown in the item's color when the spot is free, and **red** when it overlaps another item. Then **Place** is disabled.
+4. Buttons at the bottom while placing:
+
+| Button | Action |
+|---|---|
+| **Rotate** | Turns a floor item by 90°. Disabled for wall items |
+| **Place** | Puts the item down. Only when the spot is free |
+| **Store** | Puts the item back into the inventory |
+
+5. Tap an item that is already in the room → it is picked up and can be moved, rotated or stored the same way.
+6. Wall items switch between the left and right wall depending on which side of the room the finger is on.
 
 ## 7. Shop & Economy
 
@@ -174,7 +192,7 @@ Saved for later versions:
 |---|---|---|
 | v0.1 | Puzzle Prototype | Grid, items, matching — with placeholder squares ✅ |
 | v0.2 | Puzzle Complete | Tap to match, combo, coins, spawning, end of round, results ✅ |
-| v0.3 | Room Prototype | Isometric grid, place / move / rotate furniture |
+| v0.3 | Room Prototype | Isometric grid, place / move / rotate furniture ✅ |
 | v0.4 | Shop & Save | Shop, inventory, economy, saving |
 | v0.5 | Art & UI | Pixel art, menus, polish |
 | v1.0 | Release | Bug fixes, balance, Android build (APK on GitHub Releases / itch.io) |

@@ -111,8 +111,8 @@ Flow: `Main Menu → Room View ⇄ Puzzle → Round Results → Room View ⇄ Sh
 
 ### 6.1 Room
 - Isometric room shown as a "cube": floor + left and right back walls.
-- **Floor grid:** 6 × 6 cells.
-- **Wall grids:** each of the two walls has its own grid, 6 cells wide × 4 cells high. Wall items snap to it.
+- **Floor grid:** 5 × 5 cells.
+- **Wall grids:** each of the two walls has its own grid, 5 cells wide × 5 cells high. Wall items snap to it.
 - The grid is visible only while the player is placing or moving an item.
 
 ### 6.2 Furniture

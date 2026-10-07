@@ -12,6 +12,7 @@ public class RoomHud : MonoBehaviour
     public event Action RotateClicked;
     public event Action PlaceClicked;
     public event Action StoreClicked;
+    public event Action PlayClicked;
 
     [SerializeField] private Color panelColor = new Color(0.16f, 0.17f, 0.24f, 0.9f);
     [SerializeField] private Color buttonColor = new Color(0.29f, 0.53f, 0.96f);
@@ -22,6 +23,7 @@ public class RoomHud : MonoBehaviour
     private RectTransform placingPanel;
     private Button rotateButton;
     private Button placeButton;
+    private Text coinsText;
 
     private void Awake()
     {
@@ -53,6 +55,11 @@ public class RoomHud : MonoBehaviour
         placingPanel.gameObject.SetActive(true);
     }
 
+    public void SetCoins(int coins)
+    {
+        coinsText.text = "Coins: " + coins;
+    }
+
     public void SetPlaceEnabled(bool isEnabled)
     {
         placeButton.interactable = isEnabled;
@@ -72,6 +79,23 @@ public class RoomHud : MonoBehaviour
         scaler.matchWidthOrHeight = 0.5f;
 
         root.AddComponent<GraphicRaycaster>();
+
+        RectTransform topBar = CreateRect("Top Bar", root.transform);
+        topBar.anchorMin = new Vector2(0f, 1f);
+        topBar.anchorMax = new Vector2(1f, 1f);
+        topBar.pivot = new Vector2(0.5f, 1f);
+        topBar.offsetMin = new Vector2(40f, -260f);
+        topBar.offsetMax = new Vector2(-40f, -120f);
+
+        coinsText = CreateLabel("Coins", topBar, "Coins: 0", 64, TextAnchor.MiddleLeft);
+        Stretch((RectTransform)coinsText.transform);
+
+        Button playButton = CreateButton("Play", topBar, placeColor, () => PlayClicked?.Invoke());
+        RectTransform playRect = (RectTransform)playButton.transform;
+        playRect.anchorMin = new Vector2(1f, 0.5f);
+        playRect.anchorMax = new Vector2(1f, 0.5f);
+        playRect.pivot = new Vector2(1f, 0.5f);
+        playRect.sizeDelta = new Vector2(300f, 130f);
 
         inventoryPanel = CreateBottomPanel("Inventory", root.transform, 440f);
         itemsGrid = CreateRect("Items", inventoryPanel);
@@ -130,21 +154,33 @@ public class RoomHud : MonoBehaviour
         Button button = rect.gameObject.AddComponent<Button>();
         button.onClick.AddListener(() => onClick());
 
-        RectTransform labelRect = CreateRect("Label", rect);
-        labelRect.anchorMin = Vector2.zero;
-        labelRect.anchorMax = Vector2.one;
-        labelRect.offsetMin = Vector2.zero;
-        labelRect.offsetMax = Vector2.zero;
-
-        Text text = labelRect.gameObject.AddComponent<Text>();
-        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        text.text = label;
-        text.fontSize = 48;
-        text.fontStyle = FontStyle.Bold;
-        text.alignment = TextAnchor.MiddleCenter;
-        text.color = Color.white;
+        Text text = CreateLabel("Label", rect, label, 48, TextAnchor.MiddleCenter);
+        Stretch((RectTransform)text.transform);
 
         return button;
+    }
+
+    private Text CreateLabel(string objectName, Transform parent, string value, int fontSize, TextAnchor alignment)
+    {
+        RectTransform rect = CreateRect(objectName, parent);
+
+        Text text = rect.gameObject.AddComponent<Text>();
+        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        text.text = value;
+        text.fontSize = fontSize;
+        text.fontStyle = FontStyle.Bold;
+        text.alignment = alignment;
+        text.color = Color.white;
+
+        return text;
+    }
+
+    private static void Stretch(RectTransform rect)
+    {
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
     }
 
     private static void EnsureEventSystem()

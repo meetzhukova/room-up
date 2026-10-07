@@ -9,12 +9,36 @@ public class PuzzleRound
 
     private Board board;
     private Wallet wallet;
+    private Spawner spawner;
     private int roundCoins;
+    private bool isOver;
 
-    public PuzzleRound(int width, int height, Wallet wallet)
+    public PuzzleRound(int width, int height, Wallet wallet, Spawner spawner)
     {
         board = new Board(width, height);
         this.wallet = wallet;
+        this.spawner = spawner;
+    }
+
+    public bool IsOver()
+    {
+        return isOver;
+    }
+
+    public bool Update(float deltaTime)
+    {
+        if (isOver || !spawner.Tick(deltaTime, board.GetFillRatio()))
+        {
+            return false;
+        }
+
+        if (!spawner.SpawnItem(board))
+        {
+            isOver = true;
+            return false;
+        }
+
+        return true;
     }
 
     public int GetRoundCoins()
@@ -50,7 +74,7 @@ public class PuzzleRound
     {
         List<Vector2Int> matched = new List<Vector2Int>();
 
-        if (!board.IsEmpty(cell))
+        if (isOver || !board.IsEmpty(cell))
         {
             return new TapResult(matched, 0, false);
         }

@@ -31,6 +31,24 @@ public class Board
         return (float)(total - empty) / total;
     }
 
+    public List<Vector2Int> GetItemCells()
+    {
+        List<Vector2Int> result = new List<Vector2Int>();
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (cells[x, y] != null)
+                {
+                    result.Add(new Vector2Int(x, y));
+                }
+            }
+        }
+
+        return result;
+    }
+
     public bool IsInside(Vector2Int cell)
     {
         return cell.x >= 0 && cell.x < width

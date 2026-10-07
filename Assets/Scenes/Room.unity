@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 1960558914}
   - component: {fileID: 1960558913}
   - component: {fileID: 1960558912}
+  - component: {fileID: 1960558916}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -341,37 +342,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomController
   size: 5
   wallHeight: 5
-  startItems:
+  startCoins: 0
+  catalog:
   - name: Chair
     size: {x: 1, y: 1}
     isWallItem: 0
     height: 1
+    price: 20
     color: {r: 0.9, g: 0.45, b: 0.4, a: 1}
-  - name: Bed
-    size: {x: 1, y: 2}
+  - name: Plant
+    size: {x: 1, y: 1}
     isWallItem: 0
-    height: 0.6
-    color: {r: 0.45, g: 0.6, b: 0.9, a: 1}
-  - name: Table
-    size: {x: 2, y: 2}
-    isWallItem: 0
-    height: 0.8
-    color: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+    height: 1.4
+    price: 25
+    color: {r: 0.4, g: 0.75, b: 0.45, a: 1}
   - name: Lamp
     size: {x: 1, y: 1}
     isWallItem: 0
     height: 1.8
+    price: 30
     color: {r: 0.98, g: 0.84, b: 0.3, a: 1}
   - name: Picture
     size: {x: 1, y: 1}
     isWallItem: 1
     height: 0
-    color: {r: 0.55, g: 0.8, b: 0.5, a: 1}
+    price: 35
+    color: {r: 0.55, g: 0.8, b: 0.9, a: 1}
   - name: Shelf
     size: {x: 2, y: 1}
     isWallItem: 1
     height: 0
+    price: 50
     color: {r: 0.75, g: 0.55, b: 0.85, a: 1}
+  - name: Table
+    size: {x: 2, y: 2}
+    isWallItem: 0
+    height: 0.8
+    price: 80
+    color: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  - name: Bed
+    size: {x: 1, y: 2}
+    isWallItem: 0
+    height: 0.6
+    price: 120
+    color: {r: 0.45, g: 0.6, b: 0.9, a: 1}
+  - name: Sofa
+    size: {x: 1, y: 2}
+    isWallItem: 0
+    height: 0.9
+    price: 150
+    color: {r: 0.9, g: 0.55, b: 0.7, a: 1}
 --- !u!114 &1960558913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +438,24 @@ MonoBehaviour:
   wallFrameWidth: 0.1
   ghostAlpha: 0.75
   invalidColor: {r: 0.95, g: 0.3, b: 0.3, a: 0.75}
+--- !u!114 &1960558916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960558909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3010002dfdf94a69a70c37a87fe27a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopView
+  dimColor: {r: 0, g: 0, b: 0, a: 0.65}
+  panelColor: {r: 0.16, g: 0.17, b: 0.24, a: 1}
+  cardColor: {r: 0.23, g: 0.24, b: 0.33, a: 1}
+  buyColor: {r: 0.3, g: 0.75, b: 0.4, a: 1}
+  closeColor: {r: 0.29, g: 0.53, b: 0.96, a: 1}
+  accentColor: {r: 0.98, g: 0.84, b: 0.28, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

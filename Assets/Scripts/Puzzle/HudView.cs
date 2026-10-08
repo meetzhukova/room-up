@@ -9,6 +9,7 @@ public class HudView : MonoBehaviour
     public event Action BackClicked;
 
     [SerializeField] private Text coinsText;
+    [SerializeField] private Text scoreText;
     [SerializeField] private GameObject comboRoot;
     [SerializeField] private Text comboText;
     [SerializeField] private Button backButton;
@@ -25,6 +26,7 @@ public class HudView : MonoBehaviour
 
         SetComboVisible(false);
         SetCoins(0);
+        SetScore(0);
     }
 
     public void SetCoins(int coins)
@@ -32,6 +34,14 @@ public class HudView : MonoBehaviour
         if (coinsText != null)
         {
             coinsText.text = coins.ToString();
+        }
+    }
+
+    public void SetScore(int score)
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
         }
     }
 

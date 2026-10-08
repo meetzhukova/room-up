@@ -83,7 +83,8 @@ public class PuzzleController : MonoBehaviour
         round.StartRound(startFill);
 
         boardView.Show(round.GetBoard());
-        hudView.SetCoins(0);
+        hudView.SetScore(0);
+        hudView.SetCoins(wallet.GetCoins());
         resultsView.Hide();
     }
 
@@ -139,7 +140,8 @@ public class PuzzleController : MonoBehaviour
 
         lineView.Clear();
         boardView.Refresh();
-        hudView.SetCoins(round.GetRoundCoins());
+        hudView.SetScore(round.GetRoundCoins());
+        hudView.SetCoins(wallet.GetCoins());
 
         if (result.IsCombo)
         {

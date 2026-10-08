@@ -1,0 +1,2641 @@
+fileFormatVersion: 2
+guid: 9f1800ee66e1b4087b9c4e1e6890fe64
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2512460085672989619
+    second: bgPuzzle_0
+  - first:
+      213: 1113588909026285051
+    second: bgPuzzle_1
+  - first:
+      213: 7800088251150722764
+    second: bgPuzzle_2
+  - first:
+      213: 2517459512596367897
+    second: bgPuzzle_3
+  - first:
+      213: -8587489674282376973
+    second: bgPuzzle_4
+  - first:
+      213: 931100510498590089
+    second: bgPuzzle_5
+  - first:
+      213: -3718521320608524302
+    second: bgPuzzle_6
+  - first:
+      213: -482447465744135901
+    second: bgPuzzle_7
+  - first:
+      213: -7224759141500665160
+    second: bgPuzzle_8
+  - first:
+      213: -3775895840168815029
+    second: bgPuzzle_9
+  - first:
+      213: 707060353644599147
+    second: bgPuzzle_10
+  - first:
+      213: -8808207626331377070
+    second: bgPuzzle_11
+  - first:
+      213: -3407974959330147857
+    second: bgPuzzle_12
+  - first:
+      213: -1166694690246213434
+    second: bgPuzzle_13
+  - first:
+      213: 3534658034595270576
+    second: bgPuzzle_14
+  - first:
+      213: 1117003249596311773
+    second: bgPuzzle_15
+  - first:
+      213: -378634916355217604
+    second: bgPuzzle_16
+  - first:
+      213: 1928799540292998049
+    second: bgPuzzle_17
+  - first:
+      213: 6833023223624997700
+    second: bgPuzzle_18
+  - first:
+      213: 5954910030133562585
+    second: bgPuzzle_19
+  - first:
+      213: -938940267634573027
+    second: bgPuzzle_20
+  - first:
+      213: -6157450802264637545
+    second: bgPuzzle_21
+  - first:
+      213: -8622573402740273955
+    second: bgPuzzle_22
+  - first:
+      213: -8161237688691956131
+    second: bgPuzzle_23
+  - first:
+      213: -904901685236571878
+    second: bgPuzzle_24
+  - first:
+      213: 7777314619279830837
+    second: bgPuzzle_25
+  - first:
+      213: -5000936966802018013
+    second: bgPuzzle_26
+  - first:
+      213: -3352401365206181231
+    second: bgPuzzle_27
+  - first:
+      213: 3815931522704690712
+    second: bgPuzzle_28
+  - first:
+      213: -1359520415653951698
+    second: bgPuzzle_29
+  - first:
+      213: -3497267060564113312
+    second: bgPuzzle_30
+  - first:
+      213: -8327553978360702069
+    second: bgPuzzle_31
+  - first:
+      213: -7613195533133077577
+    second: bgPuzzle_32
+  - first:
+      213: -8125700318309872907
+    second: bgPuzzle_33
+  - first:
+      213: 4619344817135212899
+    second: bgPuzzle_34
+  - first:
+      213: -8315744384756818592
+    second: bgPuzzle_35
+  - first:
+      213: -7785132666831228960
+    second: bgPuzzle_36
+  - first:
+      213: -4108138916321346194
+    second: bgPuzzle_37
+  - first:
+      213: 350557958330677766
+    second: bgPuzzle_38
+  - first:
+      213: 2499718519014613705
+    second: bgPuzzle_39
+  - first:
+      213: -4550097311029760310
+    second: bgPuzzle_40
+  - first:
+      213: 8965237202523407922
+    second: bgPuzzle_41
+  - first:
+      213: 2425804114983013588
+    second: bgPuzzle_42
+  - first:
+      213: -5193012710438507412
+    second: bgPuzzle_43
+  - first:
+      213: 961195069407477538
+    second: bgPuzzle_44
+  - first:
+      213: 7925193401468907124
+    second: bgPuzzle_45
+  - first:
+      213: 8162062483345760555
+    second: bgPuzzle_46
+  - first:
+      213: -6662152404766630369
+    second: bgPuzzle_47
+  - first:
+      213: -2132060005969365169
+    second: bgPuzzle_48
+  - first:
+      213: -7516637676203193454
+    second: bgPuzzle_49
+  - first:
+      213: -7062834770046419250
+    second: bgPuzzle_50
+  - first:
+      213: 5662464011635002712
+    second: bgPuzzle_51
+  - first:
+      213: -4835079720881241861
+    second: bgPuzzle_52
+  - first:
+      213: -7363473260873492297
+    second: bgPuzzle_53
+  - first:
+      213: -2549648294477364678
+    second: bgPuzzle_54
+  - first:
+      213: -2948806303763404810
+    second: bgPuzzle_55
+  - first:
+      213: -4891726672780663011
+    second: bgPuzzle_56
+  - first:
+      213: -1579337606661933417
+    second: bgPuzzle_57
+  - first:
+      213: 6754998389809537826
+    second: bgPuzzle_58
+  - first:
+      213: -1782513447079700533
+    second: bgPuzzle_59
+  - first:
+      213: -62340520269796477
+    second: bgPuzzle_60
+  - first:
+      213: -7800746985984196264
+    second: bgPuzzle_61
+  - first:
+      213: 386009818910406096
+    second: bgPuzzle_62
+  - first:
+      213: 919896209314738562
+    second: bgPuzzle_63
+  - first:
+      213: 5074142350498205349
+    second: bgPuzzle_64
+  - first:
+      213: -8284016515269248810
+    second: bgPuzzle_65
+  - first:
+      213: 1833991430241564371
+    second: bgPuzzle_66
+  - first:
+      213: 7142463923675493967
+    second: bgPuzzle_67
+  - first:
+      213: -886883413751224090
+    second: bgPuzzle_68
+  - first:
+      213: 1510862616657528299
+    second: bgPuzzle_69
+  - first:
+      213: -2462422049758661712
+    second: bgPuzzle_70
+  - first:
+      213: -5441215443526159940
+    second: bgPuzzle_71
+  - first:
+      213: 3025838622706007336
+    second: bgPuzzle_72
+  - first:
+      213: 1392979509980617438
+    second: bgPuzzle_73
+  - first:
+      213: -6118159982417907780
+    second: bgPuzzle_74
+  - first:
+      213: -2268093277157086014
+    second: bgPuzzle_75
+  - first:
+      213: 7318440726984891738
+    second: bgPuzzle_76
+  - first:
+      213: 5258938982475185845
+    second: bgPuzzle_77
+  - first:
+      213: 5836070040555814431
+    second: bgPuzzle_78
+  - first:
+      213: -2612914433969253954
+    second: bgPuzzle_79
+  - first:
+      213: -2852413761398929730
+    second: bgPuzzle_80
+  - first:
+      213: 2480679073115621877
+    second: bgPuzzle_81
+  - first:
+      213: 2685003028783708440
+    second: bgPuzzle_82
+  - first:
+      213: -4988696298741396932
+    second: bgPuzzle_83
+  - first:
+      213: 2387479427973417573
+    second: bgPuzzle_84
+  - first:
+      213: 3151666100213682079
+    second: bgPuzzle_85
+  - first:
+      213: -9818551715789421
+    second: bgPuzzle_86
+  - first:
+      213: -8185638152900723279
+    second: bgPuzzle_87
+  - first:
+      213: -1071335549041938662
+    second: bgPuzzle_88
+  - first:
+      213: 6718200262768101252
+    second: bgPuzzle_89
+  - first:
+      213: 8377965930729323364
+    second: bgPuzzle_90
+  - first:
+      213: -7493812343108102236
+    second: bgPuzzle_91
+  - first:
+      213: 3916808796673634610
+    second: bgPuzzle_92
+  - first:
+      213: 1059621868749953191
+    second: bgPuzzle_93
+  - first:
+      213: -8944526024374020244
+    second: bgPuzzle_94
+  - first:
+      213: -7396897900625194616
+    second: bgPuzzle_95
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bgPuzzle_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3d2e6e22d0ed220800000000000000
+      internalID: 2512460085672989619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf593547633447f00800000000000000
+      internalID: 1113588909026285051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_2
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6698210fa7f3c60800000000000000
+      internalID: 7800088251150722764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_3
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a0cb0b610dfe220800000000000000
+      internalID: 2517459512596367897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_4
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f06014c3ab13d880800000000000000
+      internalID: -8587489674282376973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_5
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d047a2bfeebec00800000000000000
+      internalID: 931100510498590089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_6
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f7996b7f88256cc0800000000000000
+      internalID: -3718521320608524302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 329888506900e49f0800000000000000
+      internalID: -482447465744135901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_8
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b2c817d6df7cbb90800000000000000
+      internalID: -7224759141500665160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_9
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b46dcd92db2599bc0800000000000000
+      internalID: -3775895840168815029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_10
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b679fbd35abffc900800000000000000
+      internalID: 707060353644599147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_11
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252b1ace4d5f2c580800000000000000
+      internalID: -8808207626331377070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_12
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe143b9a4d074b0d0800000000000000
+      internalID: -3407974959330147857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_13
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c04a825c511fcfe0800000000000000
+      internalID: -1166694690246213434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_14
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 454
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf088a41c0ad0130800000000000000
+      internalID: 3534658034595270576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_15
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 413
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd825219984608f00800000000000000
+      internalID: 1117003249596311773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_16
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c376617bc81debaf0800000000000000
+      internalID: -378634916355217604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_17
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a3d91276f874ca10800000000000000
+      internalID: 1928799540292998049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_18
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b99224b66c3de50800000000000000
+      internalID: 6833023223624997700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_19
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dc85873f1714a250800000000000000
+      internalID: 5954910030133562585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_20
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d11c4522dc638f2f0800000000000000
+      internalID: -938940267634573027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_21
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79f72117e175c8aa0800000000000000
+      internalID: -6157450802264637545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_22
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddc4fefac27765880800000000000000
+      internalID: -8622573402740273955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_23
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d566cfdef857dbe80800000000000000
+      internalID: -8161237688691956131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_24
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1162de26b42173f0800000000000000
+      internalID: -904901685236571878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_25
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53f60a4b0729eeb60800000000000000
+      internalID: 7777314619279830837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_26
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32175a5235a199ab0800000000000000
+      internalID: -5000936966802018013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_27
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19ad95a58b0e971d0800000000000000
+      internalID: -3352401365206181231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_28
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e47029089e4f430800000000000000
+      internalID: 3815931522704690712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_29
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e270e009263022de0800000000000000
+      internalID: -1359520415653951698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_30
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 372
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068c6624326377fc0800000000000000
+      internalID: -3497267060564113312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_31
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 331
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8b5be727c59e6c80800000000000000
+      internalID: -8327553978360702069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_32
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b32302cffe785690800000000000000
+      internalID: -7613195533133077577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_33
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fa8cdfbc96bb3f80800000000000000
+      internalID: -8125700318309872907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_34
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 369d26803a53b1040800000000000000
+      internalID: 4619344817135212899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_35
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06dde9f6a8a889c80800000000000000
+      internalID: -8315744384756818592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_36
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef2c304617a5f390800000000000000
+      internalID: -7785132666831228960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_37
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6d35b4eb65fcf6c0800000000000000
+      internalID: -4108138916321346194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_38
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a7c731b9e6dd400800000000000000
+      internalID: 350557958330677766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_39
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c2e45cbfb8c0b220800000000000000
+      internalID: 2499718519014613705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_40
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ace6c926a9ecad0c0800000000000000
+      internalID: -4550097311029760310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_41
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 236468f5cbbea6c70800000000000000
+      internalID: 8965237202523407922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_42
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dc4e387dff2aa120800000000000000
+      internalID: 2425804114983013588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_43
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c69302476bee7b0800000000000000
+      internalID: -5193012710438507412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_44
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22fb3efa2d9d65d00800000000000000
+      internalID: 961195069407477538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_45
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ee2deb861fbfd60800000000000000
+      internalID: 7925193401468907124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_46
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 290
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b21ed5a8598754170800000000000000
+      internalID: 8162062483345760555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_47
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 249
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1ede5a7fa74b83a0800000000000000
+      internalID: -6662152404766630369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_48
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47f06088b66962e0800000000000000
+      internalID: -2132060005969365169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_49
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b479cbbd98fa790800000000000000
+      internalID: -7516637676203193454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_50
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecefa187235cbfd90800000000000000
+      internalID: -7062834770046419250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_51
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85d00fe740d159e40800000000000000
+      internalID: 5662464011635002712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_52
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf0cd287c9856ecb0800000000000000
+      internalID: -4835079720881241861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_53
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b85c842510bfc990800000000000000
+      internalID: -7363473260873492297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_54
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a320f718264dd9cd0800000000000000
+      internalID: -2549648294477364678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_55
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f7efb84a4cb317d0800000000000000
+      internalID: -2948806303763404810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_56
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17ea9232881d1cb0800000000000000
+      internalID: -4891726672780663011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_57
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 796ff7e70d0151ae0800000000000000
+      internalID: -1579337606661933417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_58
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223eeeafe339ebd50800000000000000
+      internalID: 6754998389809537826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_59
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7157bc67d3347e0800000000000000
+      internalID: -1782513447079700533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_60
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ba43a80a5822ff0800000000000000
+      internalID: -62340520269796477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_61
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85186b542fd2eb390800000000000000
+      internalID: -7800746985984196264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_62
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 208
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d5b7f792e16b5500800000000000000
+      internalID: 386009818910406096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_63
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 167
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 281fe628ab024cc00800000000000000
+      internalID: 919896209314738562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_64
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ae06357599fa6640800000000000000
+      internalID: 5074142350498205349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_65
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d838e5bed2490d80800000000000000
+      internalID: -8284016515269248810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_66
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d6b8a82d75a37910800000000000000
+      internalID: 1833991430241564371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_67
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4678bf98112f1360800000000000000
+      internalID: 7142463923675493967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_68
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e82c2eeb3821b3f0800000000000000
+      internalID: -886883413751224090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_69
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be50a428b89a7f410800000000000000
+      internalID: 1510862616657528299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_70
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b3bb053138b3ddd0800000000000000
+      internalID: -2462422049758661712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_71
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb1f046026bec74b0800000000000000
+      internalID: -5441215443526159940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_72
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d7c0e1230fdf920800000000000000
+      internalID: 3025838622706007336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_73
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edadac7eb7bd45310800000000000000
+      internalID: 1392979509980617438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_74
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbf68f059ede71ba0800000000000000
+      internalID: -6118159982417907780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_75
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cca9996e2d1680e0800000000000000
+      internalID: -2268093277157086014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_76
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d9fa10113509560800000000000000
+      internalID: 7318440726984891738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_77
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be33e934218bf840800000000000000
+      internalID: 5258938982475185845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_78
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 126
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1ef0a3f7c2edf050800000000000000
+      internalID: 5836070040555814431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_79
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 85
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb195c68a201dbbd0800000000000000
+      internalID: -2612914433969253954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_80
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb68167fbc03a68d0800000000000000
+      internalID: -2852413761398929730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_81
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f94dca49742d6220800000000000000
+      internalID: 2480679073115621877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_82
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8193087670c034520800000000000000
+      internalID: 2685003028783708440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_83
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3a8635c52794cab0800000000000000
+      internalID: -4988696298741396932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_84
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56a88ece3e7022120800000000000000
+      internalID: 2387479427973417573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_85
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9f80e1be97fcbb20800000000000000
+      internalID: 3151666100213682079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_86
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39585c8441e1ddff0800000000000000
+      internalID: -9818551715789421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_87
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bdb7742875c66e80800000000000000
+      internalID: -8185638152900723279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_88
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1f6b1c8ef9d121f0800000000000000
+      internalID: -1071335549041938662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_89
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4878a306b87db3d50800000000000000
+      internalID: 6718200262768101252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_90
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b327920a3844470800000000000000
+      internalID: 8377965930729323364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_91
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a79a9bb061a00890800000000000000
+      internalID: -7493812343108102236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_92
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2317bd239dc4b5630800000000000000
+      internalID: 3916808796673634610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_93
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a8931bb97884be00800000000000000
+      internalID: 1059621868749953191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_94
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 44
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6713f098f8aed380800000000000000
+      internalID: -8944526024374020244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgPuzzle_95
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 3
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8811761cc80f85990800000000000000
+      internalID: -7396897900625194616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bgPuzzle_0: 2512460085672989619
+      bgPuzzle_1: 1113588909026285051
+      bgPuzzle_10: 707060353644599147
+      bgPuzzle_11: -8808207626331377070
+      bgPuzzle_12: -3407974959330147857
+      bgPuzzle_13: -1166694690246213434
+      bgPuzzle_14: 3534658034595270576
+      bgPuzzle_15: 1117003249596311773
+      bgPuzzle_16: -378634916355217604
+      bgPuzzle_17: 1928799540292998049
+      bgPuzzle_18: 6833023223624997700
+      bgPuzzle_19: 5954910030133562585
+      bgPuzzle_2: 7800088251150722764
+      bgPuzzle_20: -938940267634573027
+      bgPuzzle_21: -6157450802264637545
+      bgPuzzle_22: -8622573402740273955
+      bgPuzzle_23: -8161237688691956131
+      bgPuzzle_24: -904901685236571878
+      bgPuzzle_25: 7777314619279830837
+      bgPuzzle_26: -5000936966802018013
+      bgPuzzle_27: -3352401365206181231
+      bgPuzzle_28: 3815931522704690712
+      bgPuzzle_29: -1359520415653951698
+      bgPuzzle_3: 2517459512596367897
+      bgPuzzle_30: -3497267060564113312
+      bgPuzzle_31: -8327553978360702069
+      bgPuzzle_32: -7613195533133077577
+      bgPuzzle_33: -8125700318309872907
+      bgPuzzle_34: 4619344817135212899
+      bgPuzzle_35: -8315744384756818592
+      bgPuzzle_36: -7785132666831228960
+      bgPuzzle_37: -4108138916321346194
+      bgPuzzle_38: 350557958330677766
+      bgPuzzle_39: 2499718519014613705
+      bgPuzzle_4: -8587489674282376973
+      bgPuzzle_40: -4550097311029760310
+      bgPuzzle_41: 8965237202523407922
+      bgPuzzle_42: 2425804114983013588
+      bgPuzzle_43: -5193012710438507412
+      bgPuzzle_44: 961195069407477538
+      bgPuzzle_45: 7925193401468907124
+      bgPuzzle_46: 8162062483345760555
+      bgPuzzle_47: -6662152404766630369
+      bgPuzzle_48: -2132060005969365169
+      bgPuzzle_49: -7516637676203193454
+      bgPuzzle_5: 931100510498590089
+      bgPuzzle_50: -7062834770046419250
+      bgPuzzle_51: 5662464011635002712
+      bgPuzzle_52: -4835079720881241861
+      bgPuzzle_53: -7363473260873492297
+      bgPuzzle_54: -2549648294477364678
+      bgPuzzle_55: -2948806303763404810
+      bgPuzzle_56: -4891726672780663011
+      bgPuzzle_57: -1579337606661933417
+      bgPuzzle_58: 6754998389809537826
+      bgPuzzle_59: -1782513447079700533
+      bgPuzzle_6: -3718521320608524302
+      bgPuzzle_60: -62340520269796477
+      bgPuzzle_61: -7800746985984196264
+      bgPuzzle_62: 386009818910406096
+      bgPuzzle_63: 919896209314738562
+      bgPuzzle_64: 5074142350498205349
+      bgPuzzle_65: -8284016515269248810
+      bgPuzzle_66: 1833991430241564371
+      bgPuzzle_67: 7142463923675493967
+      bgPuzzle_68: -886883413751224090
+      bgPuzzle_69: 1510862616657528299
+      bgPuzzle_7: -482447465744135901
+      bgPuzzle_70: -2462422049758661712
+      bgPuzzle_71: -5441215443526159940
+      bgPuzzle_72: 3025838622706007336
+      bgPuzzle_73: 1392979509980617438
+      bgPuzzle_74: -6118159982417907780
+      bgPuzzle_75: -2268093277157086014
+      bgPuzzle_76: 7318440726984891738
+      bgPuzzle_77: 5258938982475185845
+      bgPuzzle_78: 5836070040555814431
+      bgPuzzle_79: -2612914433969253954
+      bgPuzzle_8: -7224759141500665160
+      bgPuzzle_80: -2852413761398929730
+      bgPuzzle_81: 2480679073115621877
+      bgPuzzle_82: 2685003028783708440
+      bgPuzzle_83: -4988696298741396932
+      bgPuzzle_84: 2387479427973417573
+      bgPuzzle_85: 3151666100213682079
+      bgPuzzle_86: -9818551715789421
+      bgPuzzle_87: -8185638152900723279
+      bgPuzzle_88: -1071335549041938662
+      bgPuzzle_89: 6718200262768101252
+      bgPuzzle_9: -3775895840168815029
+      bgPuzzle_90: 8377965930729323364
+      bgPuzzle_91: -7493812343108102236
+      bgPuzzle_92: 3916808796673634610
+      bgPuzzle_93: 1059621868749953191
+      bgPuzzle_94: -8944526024374020244
+      bgPuzzle_95: -7396897900625194616
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

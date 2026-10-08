@@ -7,7 +7,7 @@ using UnityEngine;
 public class PuzzleController : MonoBehaviour
 {
     [SerializeField] private int width = 8;
-    [SerializeField] private int height = 10;
+    [SerializeField] private int height = 12;
     [SerializeField, Range(0f, 1f)] private float startFill = 0.4f;
     [SerializeField] private float linkShowTime = 0.15f;
 
@@ -43,6 +43,7 @@ public class PuzzleController : MonoBehaviour
         boardInput.Pressed += OnPress;
         resultsView.PlayAgainClicked += StartNewRound;
         resultsView.HomeClicked += GoHome;
+        hudView.BackClicked += GoHome;
     }
 
     private void OnDisable()
@@ -50,6 +51,7 @@ public class PuzzleController : MonoBehaviour
         boardInput.Pressed -= OnPress;
         resultsView.PlayAgainClicked -= StartNewRound;
         resultsView.HomeClicked -= GoHome;
+        hudView.BackClicked -= GoHome;
     }
 
     private void Update()
